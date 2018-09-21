@@ -1,6 +1,6 @@
 define([], function(){
 	var _isShow = false;
-	var $tag, $aboutme, $friends;
+	var $tag, $aboutme, $friends,$categories;
 
 	var ctn,radio,scaleW,idx,basicwrap;
 
@@ -18,6 +18,9 @@ define([], function(){
 		if($tag){
 			document.getElementById("js-mobile-tagcloud").innerHTML = $tag.innerHTML;
 		}
+		if($categories){
+			document.getElementById("js-mobile-categories").innerHTML = $tag.innerHTML;
+		}
 		if($aboutme){
 			document.getElementById("js-mobile-aboutme").innerHTML = $aboutme.innerHTML;
 		}
@@ -32,15 +35,17 @@ define([], function(){
 		$viewer.id = "viewer";
 		$viewer.className = "hide";
 		$tag = document.getElementById("js-tagcloud");
+		$categories= document.getElementById("js-categories");
 		$aboutme = document.getElementById("js-aboutme");
 		$friends = document.getElementById("js-friends");
 		var tagStr = $tag?'<span class="viewer-title">标签</span><div class="viewer-div tagcloud" id="js-mobile-tagcloud"></div>':"";
+		var categoriesStr= $categories?'<span class="viewer-title">分类</span><div class="viewer-div tagcloud" id="js-mobile-categoriesStr"></div>':"";
 		var friendsStr = $friends?'<span class="viewer-title">友情链接</span><div class="viewer-div friends" id="js-mobile-friends"></div>':"";
 		var aboutmeStr = $aboutme?'<span class="viewer-title">关于我</span><div class="viewer-div aboutme" id="js-mobile-aboutme"></div>':"";
 
 		$viewer.innerHTML = '<div id="viewer-box">\
 		<div class="viewer-box-l">\
-			<div class="viewer-box-wrap">'+aboutmeStr+friendsStr+tagStr+'</div>\
+			<div class="viewer-box-wrap">'+aboutmeStr+friendsStr+tagStr+categoriesStr+'</div>\
 		</div>\
 		<div class="viewer-box-r"></div>\
 		</div>';
