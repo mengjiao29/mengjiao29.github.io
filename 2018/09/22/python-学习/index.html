@@ -3,16 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>分类 | 博客</title>
+    <title>python 学习 | 博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+    <meta name="description" content="1.在python中不存在num++,加1可以有如下写法num+=1。 2.if，for后面都要加:。并且，以缩进来判断函数体。">
+<meta name="keywords" content="易错点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python 学习">
+<meta property="og:url" content="http://yoursite.com/2018/09/22/python-学习/index.html">
 <meta property="og:site_name" content="博客">
+<meta property="og:description" content="1.在python中不存在num++,加1可以有如下写法num+=1。 2.if，for后面都要加:。并且，以缩进来判断函数体。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-21T11:29:55.216Z">
+<meta property="og:updated_time" content="2018-09-22T13:41:26.055Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分类">
+<meta name="twitter:title" content="python 学习">
+<meta name="twitter:description" content="1.在python中不存在num++,加1可以有如下写法num+=1。 2.if，for后面都要加:。并且，以缩进来判断函数体。">
     
 
     
@@ -211,16 +215,169 @@
 </aside>
 
             
-            <section id="main"><section class="layout-wrap">
-    <div class="layout-title">
-        <span>分类</span>
-    </div>
-    <div class="layout-wrap-inner list-categories">
+            <section id="main"><article id="post-python-学习" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/">MATLAB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/练习题/">练习题</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li></ul>
         
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            python 学习
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fas fa-calendar-alt"></i>
+        <a href="/2018/09/22/python-学习/">
+            <time datetime="2018-09-22T12:40:23.000Z" itemprop="datePublished">2018-09-22</time>
+        </a>
     </div>
-</section></section>
+
+
+                        
+    <div class="article-category">
+    	<i class="fas fa-folder"></i>
+        <a class="article-category-link" href="/categories/Python/">Python</a><i class="fas fa-angle-right"></i><a class="article-category-link" href="/categories/Python/练习题/">练习题</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/易错点/">易错点</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>1.在python中不存在num++,加1可以有如下写法num+=1。</p>
+<p>2.if，for后面都要加:。并且，以缩进来判断函数体。</p>
+<a id="more"></a>
+<p>3.从控制台获取用户输入语句：</p>
+<pre><code>&gt;&gt;&gt;i=input(&quot;请输入：&quot;)
+请输入：42
+i：&apos;42&apos;
+</code></pre><p> 其中，i的数值类型为str型。不可与数值型进行数值运算。</p>
+<p>每日一练：</p>
+<ul>
+<li>有1，2，3，4四个数字，能组成多少个互不相同且无重复数值的数字，分别是什么？</li>
+</ul>
+<p>解答</p>
+<pre><code>for i in range(1,5):
+       for j in range(1,5):
+        for k in range(1,5):
+                if(i!=j) and (j!=k) and (i!=k):
+                    print(i,j,k)
+</code></pre>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2018/09/22/python-学习/" data-id="cjmdhmt1z000238v7zyww3vp0" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/09/21/hexo写博客/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">hexo写博客</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
+</section>
             
                 
 <aside id="sidebar">
