@@ -158,11 +158,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                3
+                4
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                3
+                4
                 <span>标签</span>
             </div>
         </div>
@@ -211,6 +211,203 @@
 
             
             <section id="main">
+    <article id="post-python程序运行错误" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/09/27/python程序运行错误/">python程序运行错误</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fas fa-calendar-alt"></i>
+        <a href="/2018/09/27/python程序运行错误/">
+            <time datetime="2018-09-27T13:47:08.000Z" itemprop="datePublished">2018-09-27</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fas fa-folder"></i>
+        <a class="article-category-link" href="/categories/Python/">Python</a><i class="fas fa-angle-right"></i><a class="article-category-link" href="/categories/Python/运行问题汇总/">运行问题汇总</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Python/">Python</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="1-提示“IndentationError-unexpected-indent”"><a href="#1-提示“IndentationError-unexpected-indent”" class="headerlink" title="1. 提示“IndentationError: unexpected indent”"></a>1. 提示“IndentationError: unexpected indent”</h2><h4 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h4><ul>
+<li>缩进问题。python中空格和tab是<strong>不通用的</strong>。而且python中<strong>代码缩进（indent)</strong>会影响代码的逻辑关系，影响执行顺序。<h4 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h4></li>
+<li>检查缩进问题，特别注意空格。</li>
+</ul>
+<hr>
+<h2 id="2-提示“ValueError-invalid-literal-for-int-with-base-10-‘-’”"><a href="#2-提示“ValueError-invalid-literal-for-int-with-base-10-‘-’”" class="headerlink" title="2.提示“ValueError: invalid literal for int() with base 10: ‘,’”"></a>2.提示“ValueError: invalid literal for int() with base 10: ‘,’”</h2><h4 id="原因：-1"><a href="#原因：-1" class="headerlink" title="原因："></a>原因：</h4><ul>
+<li>int型不能将空字符串转化为整数。说明要转换的字符串中有<strong>空的</strong>或<strong>有字母字符</strong><br><img src="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fvog3b4k4yj30me0b174n.jpg" alt=""></li>
+</ul>
+<p><img src="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fvog3uy5qsj30im04paa4.jpg" alt=""><br>因为在输入整数数组时，7前有空格。</p>
+<h4 id="解决方法：-1"><a href="#解决方法：-1" class="headerlink" title="解决方法："></a>解决方法：</h4><ul>
+<li>可以在转换前加入检查字符串内容的语句，判断是否有空或字母字符。</li>
+</ul>
+<hr>
+<h2 id="3-提示“TypeError-unsupported-operand-type-s-for-‘int’-and-‘str’”"><a href="#3-提示“TypeError-unsupported-operand-type-s-for-‘int’-and-‘str’”" class="headerlink" title="3.提示“TypeError: unsupported operand type(s) for +: ‘int’ and ‘str’”"></a>3.提示“TypeError: unsupported operand type(s) for +: ‘int’ and ‘str’”</h2><h4 id="原因：-2"><a href="#原因：-2" class="headerlink" title="原因："></a>原因：</h4><ul>
+<li><p>“类型错误：不支持操作类型为整数和字符串”</p>
+</li>
+<li><p>这里需要解释的最关键的东西是“+”，“+”在python中有两个作用，<strong>一个是数学运算符</strong>，是用来在整型、浮点型等数学之间进行加法操作的。<strong>另一个是用来进行字符串连接的</strong>。所以当你的“+”出现在即有数学运算和字符连接的情况下，计算机根本不知道哪两个是要进行字符串连接，哪两个之间要进行数学运算。（原因解答摘自网络）</p>
+<h4 id="解决方法：-2"><a href="#解决方法：-2" class="headerlink" title="解决方法："></a>解决方法：</h4></li>
+<li>将+前后的数据类型统一，可进行强制转换。</li>
+</ul>
+<h4 id="错误代码示例："><a href="#错误代码示例：" class="headerlink" title="错误代码示例："></a>错误代码示例：</h4><pre><code>i=6
+j=3
+num=9  
+print(i+&quot;+&quot;+j+&quot;+&quot;+num)
+</code></pre><h4 id="正确代码："><a href="#正确代码：" class="headerlink" title="正确代码："></a>正确代码：</h4><pre><code>i=6
+j=3
+num=9  
+print(str(i)+&quot;+&quot;+str(j)+&quot;+&quot;+str(num))
+</code></pre><p>注意：在python中，进行强制类型转换代码格式</p>
+<hr>
+<h3 id="4-提示“TypeError-twoSum-missing-1-required-positional-argument-‘target’”"><a href="#4-提示“TypeError-twoSum-missing-1-required-positional-argument-‘target’”" class="headerlink" title="4.提示“TypeError: twoSum() missing 1 required positional argument: ‘target’”"></a>4.提示“TypeError: twoSum() missing 1 required positional argument: ‘target’”</h3><h4 id="错误原因："><a href="#错误原因：" class="headerlink" title="错误原因："></a>错误原因：</h4><ul>
+<li>定义的类没有初始化或没有赋值，或者初始化有问题</li>
+</ul>
+<hr>
+<h3 id="5-“TypeError-twoSum-takes-2-positional-arguments-but-3-were-given”"><a href="#5-“TypeError-twoSum-takes-2-positional-arguments-but-3-were-given”" class="headerlink" title="5.“TypeError: twoSum() takes 2 positional arguments but 3 were given”"></a>5.“TypeError: twoSum() takes 2 positional arguments but 3 were given”</h3><h4 id="错误原因：-1"><a href="#错误原因：-1" class="headerlink" title="错误原因："></a>错误原因：</h4><ul>
+<li>类函数调用时参数出问题</li>
+</ul>
+<h4 id="错误代码示例：-1"><a href="#错误代码示例：-1" class="headerlink" title="错误代码示例："></a>错误代码示例：</h4><pre><code>class Solution():
+def twoSum(nums,target): 
+    for i in range(len(nums)):
+        if nums[i]!=0.1:
+            for j in range(len(nums)):
+                if (target-nums[i])== nums[j]:
+                    print(&quot;[&quot;+str(i)+&quot;,&quot;+str(j)+&quot;]&quot;)             
+                    nums[i]=0.1
+
+nums = [2,7,11,5]
+target = 9
+a= Solution()
+a.twoSum(nums,target)
+</code></pre><h4 id="正确代码：-1"><a href="#正确代码：-1" class="headerlink" title="正确代码："></a>正确代码：</h4><pre><code>class Solution():
+def twoSum(self,nums,target): 
+    for i in range(len(nums)):
+        if nums[i]!=0.1:
+            for j in range(len(nums)):
+                if (target-nums[i])== nums[j]:
+                    print(&quot;[&quot;+str(i)+&quot;,&quot;+str(j)+&quot;]&quot;)             
+                    nums[i]=0.1
+
+nums = [2,7,11,5]
+target = 9
+a= Solution()
+a.twoSum(nums,target)    
+</code></pre><h4 id="解析："><a href="#解析：" class="headerlink" title="解析："></a>解析：</h4><ul>
+<li>在类调用的时候，函数定义应为：def twoSum(self,nums,target)</li>
+<li>对象调用方法时，通过类的调用，在a.twoSum(nums,target)中，实际上调用的时a.twoSum(a，nums,target)</li>
+<li>绑定的方法与非绑定方法</li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2018/09/27/python程序运行错误/" data-id="cjmkq3m2r000284v7ev7g58ha" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-python-学习" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -267,7 +464,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/09/22/python-学习/" data-id="cjmdhmt1z000238v7zyww3vp0" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2018/09/22/python-学习/" data-id="cjmkq3m2h000084v7l6ss6jfl" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -398,7 +595,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/09/21/hexo写博客/" data-id="cjmdhmt1m000038v7lskhe9b7" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2018/09/21/hexo写博客/" data-id="cjmkq3m2w000684v75mrubqgz" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -529,7 +726,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/09/20/安装matlab出现的问题/" data-id="cjmdhmt28000638v7vonzdxbc" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2018/09/20/安装matlab出现的问题/" data-id="cjmkq3m2y000784v7nfcwel92" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -618,6 +815,25 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/09/27/python程序运行错误/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a><i class="fas fa-angle-right"></i><a class="article-category-link" href="/categories/Python/运行问题汇总/">运行问题汇总</a></p>
+                            <p class="item-title"><a href="/2018/09/27/python程序运行错误/" class="title">python程序运行错误</a></p>
+                            <p class="item-date"><time datetime="2018-09-27T13:47:08.000Z" itemprop="datePublished">2018-09-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/09/22/python-学习/" class="thumbnail">
     
     
@@ -681,7 +897,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/">MATLAB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/练习题/">练习题</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/">MATLAB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/练习题/">练习题</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/运行问题汇总/">运行问题汇总</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -690,7 +906,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">4</span></li></ul>
         </div>
     </div>
 
@@ -699,7 +915,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装问题及解决方法/">安装问题及解决方法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作过程/">操作过程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/易错点/">易错点</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装问题及解决方法/">安装问题及解决方法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作过程/">操作过程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/易错点/">易错点</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -708,7 +924,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/安装问题及解决方法/" style="font-size: 10px;">安装问题及解决方法</a> <a href="/tags/操作过程/" style="font-size: 10px;">操作过程</a> <a href="/tags/易错点/" style="font-size: 10px;">易错点</a>
+            <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/安装问题及解决方法/" style="font-size: 10px;">安装问题及解决方法</a> <a href="/tags/操作过程/" style="font-size: 10px;">操作过程</a> <a href="/tags/易错点/" style="font-size: 10px;">易错点</a>
         </div>
     </div>
 
