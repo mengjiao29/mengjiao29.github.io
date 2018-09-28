@@ -5,18 +5,22 @@
     
     <title>python 学习 | 博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="1.在python中不存在num++,加1可以有如下写法num+=1。 2.if，for后面都要加:。并且，以缩进来判断函数体。">
+    <meta name="description" content="python是基于值管理的，变量的值变，则会创建新内存，变量会指向这个新内存，原来内存中值不变。 　　在C/JAVA中，为变量分配内存，变量的值发生改变，则会修改内存中的值，变量的内存地址不变。">
 <meta name="keywords" content="易错点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python 学习">
 <meta property="og:url" content="http://yoursite.com/2018/09/22/python-学习/index.html">
 <meta property="og:site_name" content="博客">
-<meta property="og:description" content="1.在python中不存在num++,加1可以有如下写法num+=1。 2.if，for后面都要加:。并且，以缩进来判断函数体。">
+<meta property="og:description" content="python是基于值管理的，变量的值变，则会创建新内存，变量会指向这个新内存，原来内存中值不变。 　　在C/JAVA中，为变量分配内存，变量的值发生改变，则会修改内存中的值，变量的内存地址不变。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-22T13:41:26.055Z">
+<meta property="og:image" content="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fvpndxdygij31h60jwt8m.jpg">
+<meta property="og:image" content="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fvpnbkt3xvj31h60jw74a.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/mw690/0060lm7Tly1fvpn9jfptjj31h60jw0sp.jpg">
+<meta property="og:updated_time" content="2018-09-28T15:03:37.199Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 学习">
-<meta name="twitter:description" content="1.在python中不存在num++,加1可以有如下写法num+=1。 2.if，for后面都要加:。并且，以缩进来判断函数体。">
+<meta name="twitter:description" content="python是基于值管理的，变量的值变，则会创建新内存，变量会指向这个新内存，原来内存中值不变。 　　在C/JAVA中，为变量分配内存，变量的值发生改变，则会修改内存中的值，变量的内存地址不变。">
+<meta name="twitter:image" content="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fvpndxdygij31h60jwt8m.jpg">
     
 
     
@@ -163,11 +167,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                4
+                5
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                4
+                6
                 <span>标签</span>
             </div>
         </div>
@@ -258,15 +262,23 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>1.在python中不存在num++,加1可以有如下写法num+=1。</p>
-<p>2.if，for后面都要加:。并且，以缩进来判断函数体。</p>
+            <p>　　python是基于值管理的，变量的值变，则会创建新内存，变量会指向这个新内存，原来内存中值不变。</p>
+<p>　　在C/JAVA中，为变量分配内存，变量的值发生改变，则会修改内存中的值，变量的内存地址不变。</p>
 <a id="more"></a>
+<p>1.在python中不存在num++,加1可以有如下写法num+=1。</p>
+<p>2.if，for后面都要加:。并且，以缩进来判断函数体。</p>
 <p>3.从控制台获取用户输入语句：</p>
 <pre><code>&gt;&gt;&gt;i=input(&quot;请输入：&quot;)
 请输入：42
 i：&apos;42&apos;
 </code></pre><p> 其中，i的数值类型为str型。不可与数值型进行数值运算。</p>
-<p>每日一练：</p>
+<p>4.赋值，浅拷贝和深拷贝的比较。</p>
+<ul>
+<li>赋值：赋值为简单引用。a=b，相当于b是a的别用，引用指向相同内存。<br><img src="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fvpndxdygij31h60jwt8m.jpg" alt=""></li>
+<li>浅拷贝：创建新的对象。浅拷贝包括的操作有：切片，工厂和copy。在浅拷贝中，a和b不是同一对象，但是a，b中元素地址相同。修改b中元素会使b只想新的地址。<br><img src="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fvpnbkt3xvj31h60jw74a.jpg" alt=""></li>
+<li>深拷贝：不仅拷贝引用，还会拷贝值，申请2个地址。<br><img src="http://wx1.sinaimg.cn/mw690/0060lm7Tly1fvpn9jfptjj31h60jw0sp.jpg" alt=""></li>
+</ul>
+<hr>
 <ul>
 <li>有1，2，3，4四个数字，能组成多少个互不相同且无重复数值的数字，分别是什么？</li>
 </ul>
@@ -286,7 +298,7 @@ i：&apos;42&apos;
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/09/22/python-学习/" data-id="cjmkq5l7t0001lov71f527v5d" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2018/09/22/python-学习/" data-id="cjmm5120i000034v7apxzgljt" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -400,6 +412,25 @@ i：&apos;42&apos;
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/09/28/python支持的数据结构/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a><i class="fas fa-angle-right"></i><a class="article-category-link" href="/categories/Python/知识点总结/">知识点总结</a></p>
+                            <p class="item-title"><a href="/2018/09/28/python支持的数据结构/" class="title">&#39;python支持的数据结构&#39;</a></p>
+                            <p class="item-date"><time datetime="2018-09-28T13:18:41.000Z" itemprop="datePublished">2018-09-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/09/27/python程序运行错误/" class="thumbnail">
     
     
@@ -482,7 +513,7 @@ i：&apos;42&apos;
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/">MATLAB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/练习题/">练习题</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/运行问题汇总/">运行问题汇总</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/">MATLAB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/知识点总结/">知识点总结</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/练习题/">练习题</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/运行问题汇总/">运行问题汇总</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -491,7 +522,7 @@ i：&apos;42&apos;
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">4</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">5</span></li></ul>
         </div>
     </div>
 
@@ -500,7 +531,7 @@ i：&apos;42&apos;
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装问题及解决方法/">安装问题及解决方法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作过程/">操作过程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/易错点/">易错点</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区分/">区分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装问题及解决方法/">安装问题及解决方法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作过程/">操作过程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/易错点/">易错点</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -509,7 +540,7 @@ i：&apos;42&apos;
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/安装问题及解决方法/" style="font-size: 10px;">安装问题及解决方法</a> <a href="/tags/操作过程/" style="font-size: 10px;">操作过程</a> <a href="/tags/易错点/" style="font-size: 10px;">易错点</a>
+            <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/区分/" style="font-size: 10px;">区分</a> <a href="/tags/安装问题及解决方法/" style="font-size: 10px;">安装问题及解决方法</a> <a href="/tags/操作过程/" style="font-size: 10px;">操作过程</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/易错点/" style="font-size: 10px;">易错点</a>
         </div>
     </div>
 
