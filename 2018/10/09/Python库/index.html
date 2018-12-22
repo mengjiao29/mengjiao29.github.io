@@ -3,15 +3,19 @@
 <head>
     <meta charset="utf-8">
     
-    <title>标签: Python | 博客</title>
+    <title>Python库 | 博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="博客">
-<meta property="og:url" content="http://yoursite.com/tags/Python/index.html">
+    <meta name="description" content="#1.os库 #　　用于对文件目录的处理 1.1读取文件　　此方法在读取文件出错时，可以关闭文件。 with open(&amp;apos;/path/to/file&amp;apos;, &amp;apos;r&amp;apos;) as f: data = f.read()  r:读；  w:写;  a:追加;  b:二进制模式;  +:读写模式;###1.2 os.getcwd() ###　　显示当前文档的路径 1.3 o">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python库">
+<meta property="og:url" content="http://yoursite.com/2018/10/09/Python库/index.html">
 <meta property="og:site_name" content="博客">
+<meta property="og:description" content="#1.os库 #　　用于对文件目录的处理 1.1读取文件　　此方法在读取文件出错时，可以关闭文件。 with open(&amp;apos;/path/to/file&amp;apos;, &amp;apos;r&amp;apos;) as f: data = f.read()  r:读；  w:写;  a:追加;  b:二进制模式;  +:读写模式;###1.2 os.getcwd() ###　　显示当前文档的路径 1.3 o">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-23T05:07:29.481Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="博客">
+<meta name="twitter:title" content="Python库">
+<meta name="twitter:description" content="#1.os库 #　　用于对文件目录的处理 1.1读取文件　　此方法在读取文件出错时，可以关闭文件。 with open(&amp;apos;/path/to/file&amp;apos;, &amp;apos;r&amp;apos;) as f: data = f.read()  r:读；  w:写;  a:追加;  b:二进制模式;  +:读写模式;###1.2 os.getcwd() ###　　显示当前文档的路径 1.3 o">
     
 
     
@@ -210,50 +214,174 @@
 </aside>
 
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fas fa-tag"></i></span>
-        <h1 class="title">#Python</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-Python库" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/09/27/python程序运行错误/">python程序运行错误</a>
+        <h1 class="article-title" itemprop="name">
+            Python库
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fas fa-calendar-alt"></i>
-        <a href="/2018/09/27/python程序运行错误/">
-            <time datetime="2018-09-27T13:47:08.000Z" itemprop="datePublished">2018-09-27</time>
+        <a href="/2018/10/09/Python库/">
+            <time datetime="2018-10-09T09:41:22.000Z" itemprop="datePublished">2018-10-09</time>
         </a>
     </div>
 
 
-                    
-    <div class="article-category">
-    	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/categories/Python/">Python</a><i class="fas fa-angle-right"></i><a class="article-category-link" href="/categories/Python/运行问题汇总/">运行问题汇总</a>
-    </div>
+                        
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>#1.os库 #<br>　　用于对文件目录的处理</p>
+<h3 id="1-1读取文件"><a href="#1-1读取文件" class="headerlink" title="1.1读取文件"></a>1.1读取文件</h3><p>　　此方法在读取文件出错时，可以关闭文件。</p>
+<pre><code>with open(&apos;/path/to/file&apos;, &apos;r&apos;) as f:
+data = f.read()
+</code></pre><ul>
+<li><p>r:读；</p>
+</li>
+<li><p>w:写;</p>
+</li>
+<li><p>a:追加;</p>
+</li>
+<li><p>b:二进制模式;</p>
+</li>
+<li><p>+:读写模式;<br>###1.2 os.getcwd() ###<br>　　显示当前文档的路径</p>
+<h3 id="1-3-os-chdir-PATH"><a href="#1-3-os-chdir-PATH" class="headerlink" title="1.3 os.chdir(PATH)"></a>1.3 os.chdir(PATH)</h3><p>　　用于改变当前工作目录到指定的路径。</p>
+<h1 id="requests库"><a href="#requests库" class="headerlink" title="requests库"></a>requests库</h1><p>　　获取某个网页</p>
+<p>  r=requests.get(‘<a href="http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data&#39;" target="_blank" rel="noopener">http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data&#39;</a>)</p>
+</li>
+</ul>
+<h1 id="pandas"><a href="#pandas" class="headerlink" title="pandas"></a>pandas</h1><h3 id="read-csv-PATH"><a href="#read-csv-PATH" class="headerlink" title=".read_csv(PATH)"></a>.read_csv(PATH)</h3><p>　　读取csv文件</p>
+<pre><code>df=pd.read_csv(PATH,names=[&apos;sepal length&apos;,&apos;sepal width&apos;,&apos;petal length&apos;,&apos;petal width&apos;,&apos;class&apos;])
+</code></pre><p>　　names是为文档中数据添加标题。</p>
+<h3 id="head"><a href="#head" class="headerlink" title=".head()"></a>.head()</h3><p>　　查看前几行数据，默认5行</p>
+<h1 id="numpy库"><a href="#numpy库" class="headerlink" title="numpy库"></a>numpy库</h1><h3 id="shape"><a href="#shape" class="headerlink" title="shape()"></a>shape()</h3><p>　　函数是numpy.core.fromnumeric中的函数，它的功能是查看矩阵或者数组的维数。</p>
+<p>#Seaborn库<br>　　是一种基于matplotlib的图形可视化python libraty。应该把Seaborn视为matplotlib的补充，而不是替代物。 同时它能高度兼容numpy与pandas数据结构以及scipy与statsmodels等统计模式。</p>
 
-                    
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/Python/">Python</a>
-    </div>
-
-                </div>
-            </div>
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
+
+    <a data-url="http://yoursite.com/2018/10/09/Python库/" data-id="cjpzag96i0002wov7m4a49cxl" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/10/12/机器学习/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    机器学习的重要算法
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/10/09/Pandas学习/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Pandas学习</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
 </section>
             
                 

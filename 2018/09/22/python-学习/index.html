@@ -16,7 +16,7 @@
 <meta property="og:image" content="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fvpndxdygij31h60jwt8m.jpg">
 <meta property="og:image" content="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fvpnbkt3xvj31h60jw74a.jpg">
 <meta property="og:image" content="http://wx1.sinaimg.cn/mw690/0060lm7Tly1fvpn9jfptjj31h60jw0sp.jpg">
-<meta property="og:updated_time" content="2018-09-28T15:03:37.199Z">
+<meta property="og:updated_time" content="2018-10-13T11:48:31.320Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 学习">
 <meta name="twitter:description" content="python是基于值管理的，变量的值变，则会创建新内存，变量会指向这个新内存，原来内存中值不变。 　　在C/JAVA中，为变量分配内存，变量的值发生改变，则会修改内存中的值，变量的内存地址不变。">
@@ -167,11 +167,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                5
+                9
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                6
+                9
                 <span>标签</span>
             </div>
         </div>
@@ -288,7 +288,15 @@ i：&apos;42&apos;
         for k in range(1,5):
                 if(i!=j) and (j!=k) and (i!=k):
                     print(i,j,k)
-</code></pre>
+</code></pre><p>绘制图表</p>
+<p>Matplotlib 里的常用类的包含关系为 Figure -&gt; Axes -&gt; (Line2D, Text, etc.)一个Figure对象可以包含多个子图(Axes)，在matplotlib中用Axes对象表示一个绘图区域，可以理解为子图。</p>
+<p>可以使用subplot()快速绘制包含多个子图的图表，它的调用形式如下：</p>
+<p>subplot(numRows, numCols, plotNum)</p>
+<p>subplot将整个绘图区域等分为numRows行* numCols列个子区域，然后按照从左到右，从上到下的顺序对每个子区域进行编号，左上的子区域的编号为1。如果numRows，numCols和plotNum这三个数都小于10的话，可以把它们缩写为一个整数，例如subplot(323)和subplot(3,2,3)是相同的。subplot在plotNum指定的区域中创建一个轴对象。如果新创建的轴和之前创建的轴重叠的话，之前的轴将被删除。</p>
+<p>subplot()返回它所创建的Axes对象，我们可以将它用变量保存起来，然后用sca()交替让它们成为当前Axes对象，并调用plot()在其中绘图。</p>
+<p>当前的图表和子图可以使用plt.gcf()和plt.gca()获得，分别表示”Get Current Figure”和”Get Current Axes”</p>
+<p>plt.plot()实际上会通过plt.gca()获得当前的Axes对象ax，然后再调用ax.plot()方法实现真正的绘图。</p>
+
         
         </div>
         <footer class="article-footer">
@@ -298,7 +306,7 @@ i：&apos;42&apos;
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/09/22/python-学习/" data-id="cjmm572ze00011cv7qf1lrl90" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2018/09/22/python-学习/" data-id="cjpzag96r0008wov7rp9g8rql" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -412,6 +420,82 @@ i：&apos;42&apos;
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/12/18/小论文写作/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/12/18/小论文写作/" class="title">小论文写作</a></p>
+                            <p class="item-date"><time datetime="2018-12-18T05:10:05.000Z" itemprop="datePublished">2018-12-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/10/12/机器学习/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/机器学习/">机器学习</a></p>
+                            <p class="item-title"><a href="/2018/10/12/机器学习/" class="title">机器学习的重要算法</a></p>
+                            <p class="item-date"><time datetime="2018-10-12T02:09:05.000Z" itemprop="datePublished">2018-10-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/10/09/Python库/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/10/09/Python库/" class="title">Python库</a></p>
+                            <p class="item-date"><time datetime="2018-10-09T09:41:22.000Z" itemprop="datePublished">2018-10-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/10/09/Pandas学习/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a><i class="fas fa-angle-right"></i><a class="article-category-link" href="/categories/Python/Pandas/">Pandas</a></p>
+                            <p class="item-title"><a href="/2018/10/09/Pandas学习/" class="title">Pandas学习</a></p>
+                            <p class="item-date"><time datetime="2018-10-09T09:41:14.000Z" itemprop="datePublished">2018-10-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/09/28/python支持的数据结构/" class="thumbnail">
     
     
@@ -428,82 +512,6 @@ i：&apos;42&apos;
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/09/27/python程序运行错误/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a><i class="fas fa-angle-right"></i><a class="article-category-link" href="/categories/Python/运行问题汇总/">运行问题汇总</a></p>
-                            <p class="item-title"><a href="/2018/09/27/python程序运行错误/" class="title">python程序运行错误</a></p>
-                            <p class="item-date"><time datetime="2018-09-27T13:47:08.000Z" itemprop="datePublished">2018-09-27</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/09/22/python-学习/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a><i class="fas fa-angle-right"></i><a class="article-category-link" href="/categories/Python/练习题/">练习题</a></p>
-                            <p class="item-title"><a href="/2018/09/22/python-学习/" class="title">python 学习</a></p>
-                            <p class="item-date"><time datetime="2018-09-22T12:40:23.000Z" itemprop="datePublished">2018-09-22</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/09/21/hexo写博客/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/hexo/">hexo</a></p>
-                            <p class="item-title"><a href="/2018/09/21/hexo写博客/" class="title">hexo写博客</a></p>
-                            <p class="item-date"><time datetime="2018-09-21T08:01:43.000Z" itemprop="datePublished">2018-09-21</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/09/20/安装matlab出现的问题/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/MATLAB/">MATLAB</a></p>
-                            <p class="item-title"><a href="/2018/09/20/安装matlab出现的问题/" class="title">安装matlab出现的问题</a></p>
-                            <p class="item-date"><time datetime="2018-09-20T14:21:51.000Z" itemprop="datePublished">2018-09-20</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -513,7 +521,7 @@ i：&apos;42&apos;
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/">MATLAB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/知识点总结/">知识点总结</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/练习题/">练习题</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/运行问题汇总/">运行问题汇总</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/">MATLAB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Pandas/">Pandas</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/知识点总结/">知识点总结</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/练习题/">练习题</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/运行问题汇总/">运行问题汇总</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -522,7 +530,7 @@ i：&apos;42&apos;
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">5</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">5</span></li></ul>
         </div>
     </div>
 
@@ -531,7 +539,7 @@ i：&apos;42&apos;
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区分/">区分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装问题及解决方法/">安装问题及解决方法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作过程/">操作过程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/易错点/">易错点</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/写作技巧/">写作技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区分/">区分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装教程/">安装教程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装问题及解决方法/">安装问题及解决方法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/心得/">心得</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作过程/">操作过程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/易错点/">易错点</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -540,7 +548,7 @@ i：&apos;42&apos;
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/区分/" style="font-size: 10px;">区分</a> <a href="/tags/安装问题及解决方法/" style="font-size: 10px;">安装问题及解决方法</a> <a href="/tags/操作过程/" style="font-size: 10px;">操作过程</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/易错点/" style="font-size: 10px;">易错点</a>
+            <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/写作技巧/" style="font-size: 10px;">写作技巧</a> <a href="/tags/区分/" style="font-size: 10px;">区分</a> <a href="/tags/安装教程/" style="font-size: 10px;">安装教程</a> <a href="/tags/安装问题及解决方法/" style="font-size: 10px;">安装问题及解决方法</a> <a href="/tags/心得/" style="font-size: 10px;">心得</a> <a href="/tags/操作过程/" style="font-size: 10px;">操作过程</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/易错点/" style="font-size: 10px;">易错点</a>
         </div>
     </div>
 
