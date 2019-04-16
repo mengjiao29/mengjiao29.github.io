@@ -1,68 +1,289 @@
-extends base
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
 
-block title
-  title= page.title + ' | ' + config.title
+  
+  <title>Python库 | 博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="#1.os库 #　　用于对文件目录的处理 1.1读取文件　　此方法在读取文件出错时，可以关闭文件。 with open(&amp;apos;/path/to/file&amp;apos;, &amp;apos;r&amp;apos;) as f: data = f.read()  r:读；  w:写;  a:追加;  b:二进制模式;  +:读写模式;###1.2 os.getcwd() ###　　显示当前文档的路径 1.3 o">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python库">
+<meta property="og:url" content="http://yoursite.com/2018/10/09/Python库/index.html">
+<meta property="og:site_name" content="博客">
+<meta property="og:description" content="#1.os库 #　　用于对文件目录的处理 1.1读取文件　　此方法在读取文件出错时，可以关闭文件。 with open(&amp;apos;/path/to/file&amp;apos;, &amp;apos;r&amp;apos;) as f: data = f.read()  r:读；  w:写;  a:追加;  b:二进制模式;  +:读写模式;###1.2 os.getcwd() ###　　显示当前文档的路径 1.3 o">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-23T05:07:29.481Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python库">
+<meta name="twitter:description" content="#1.os库 #　　用于对文件目录的处理 1.1读取文件　　此方法在读取文件出错时，可以关闭文件。 with open(&amp;apos;/path/to/file&amp;apos;, &amp;apos;r&amp;apos;) as f: data = f.read()  r:读；  w:写;  a:追加;  b:二进制模式;  +:读写模式;###1.2 os.getcwd() ###　　显示当前文档的路径 1.3 o">
+  
+  
+    <link rel="icon" href="/images/default-avatar.webp">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
 
-block content
-  .post
-    h1.post-title= page.title
-    .post-meta= page.date.format('ll')
-      if page.categories.length > 0
-        span= ' | '
-        span.category
-          for category in page.categories.toArray()
-            a(href=url_for(category.path))= category.name
-      if theme.busuanzi == true
-        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
-        span#busuanzi_container_page_pv= ' | '
-          span#busuanzi_value_page_pv
-          span= ' ' + __('Hits')
-      if theme.wordcount == true
-        include _partial/wordcount.pug
-    if theme.disqus
-      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
-    if theme.changyan
-      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
-        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
-        span= ' ' + __('Comment')
-      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
-    if theme.valine.enable
-      a.disqus-comment-count( href=url_for(page.path) + '#vcomment')
-        span.valine-comment-count(data-xid=url_for(page.path))
-        span= ' ' + __('Comment')
-    if page.toc
-      div(class='clear')
-        div(id='toc' class='toc-article')
-          div(class='toc-title')= __('contents')
-          != toc(page.content, {list_number: theme.toc_number})
-    .post-content
-      != page.content
-    if theme.donate.enable == true
-      iframe(src='/donate/?AliPayQR=' + theme.donate.alipay_qr + '&WeChatQR=' + theme.donate.wechat_qr + '&GitHub=' + theme.donate.github + '&BTCQR=' + theme.donate.btc_qr + '&BTCKEY='+ theme.donate.btc_key + '&PayPal=' + theme.donate.paypal_url, style='overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;', frameborder='0', scrolling='no')
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title
+        
+        >首页</a>
+      
+        <a class="nav-item" href="/archives" title
+        
+        >归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-Python库" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      Python库
+    </h1>
+  
 
-    if theme.post_copyright.enable == true && page.copyright != false
-      div
-        ul.post-copyright
-          li.post-copyright-author
-            strong= __('copyright_author_prefix')
-            = theme.post_copyright.author
-          li.post-copyright-link
-            strong= __('copyright_link_prefix')
-            a(href='/' + page.path)= page.permalink
-          li.post-copyright-license
-            strong= __('copyright_declare_prefix')
-            if theme.post_copyright.copyright_text
-              != theme.post_copyright.copyright_text
-            else
-              != __('copyright_default_text')
-      br
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2018/10/09/Python库/" class="article-date">
+  <time datetime="2018-10-09T09:41:22.000Z" itemprop="datePublished">2018-10-09</time>
+</a>
+    
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
 
-    if theme.shareto == true
-      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
-      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <p>#1.os库 #<br>　　用于对文件目录的处理</p>
+<h3 id="1-1读取文件"><a href="#1-1读取文件" class="headerlink" title="1.1读取文件"></a>1.1读取文件</h3><p>　　此方法在读取文件出错时，可以关闭文件。</p>
+<pre><code>with open(&apos;/path/to/file&apos;, &apos;r&apos;) as f:
+data = f.read()
+</code></pre><ul>
+<li><p>r:读；</p>
+</li>
+<li><p>w:写;</p>
+</li>
+<li><p>a:追加;</p>
+</li>
+<li><p>b:二进制模式;</p>
+</li>
+<li><p>+:读写模式;<br>###1.2 os.getcwd() ###<br>　　显示当前文档的路径</p>
+<h3 id="1-3-os-chdir-PATH"><a href="#1-3-os-chdir-PATH" class="headerlink" title="1.3 os.chdir(PATH)"></a>1.3 os.chdir(PATH)</h3><p>　　用于改变当前工作目录到指定的路径。</p>
+<h1 id="requests库"><a href="#requests库" class="headerlink" title="requests库"></a>requests库</h1><p>　　获取某个网页</p>
+<p>  r=requests.get(‘<a href="http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data&#39;" target="_blank" rel="noopener">http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data&#39;</a>)</p>
+</li>
+</ul>
+<h1 id="pandas"><a href="#pandas" class="headerlink" title="pandas"></a>pandas</h1><h3 id="read-csv-PATH"><a href="#read-csv-PATH" class="headerlink" title=".read_csv(PATH)"></a>.read_csv(PATH)</h3><p>　　读取csv文件</p>
+<pre><code>df=pd.read_csv(PATH,names=[&apos;sepal length&apos;,&apos;sepal width&apos;,&apos;petal length&apos;,&apos;petal width&apos;,&apos;class&apos;])
+</code></pre><p>　　names是为文档中数据添加标题。</p>
+<h3 id="head"><a href="#head" class="headerlink" title=".head()"></a>.head()</h3><p>　　查看前几行数据，默认5行</p>
+<h1 id="numpy库"><a href="#numpy库" class="headerlink" title="numpy库"></a>numpy库</h1><h3 id="shape"><a href="#shape" class="headerlink" title="shape()"></a>shape()</h3><p>　　函数是numpy.core.fromnumeric中的函数，它的功能是查看矩阵或者数组的维数。</p>
+<p>#Seaborn库<br>　　是一种基于matplotlib的图形可视化python libraty。应该把Seaborn视为matplotlib的补充，而不是替代物。 同时它能高度兼容numpy与pandas数据结构以及scipy与statsmodels等统计模式。</p>
 
-    include _partial/tag.pug
-    include _partial/post_nav.pug
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2018/10/12/机器学习/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            机器学习的重要算法
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2018/10/09/Pandas学习/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Pandas学习</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
 
-    if page.comments
-      include _partial/comments.pug
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fvgd8h1al0j30ql0ql3z0.jpg" title="图片来自网络"></img>
+    <h3 class="avatar-name">
+      
+        似水流年
+      
+    </h3>
+    <p class="avatar-slogan">
+      静坐常思己之过，闲谈莫论他人非。
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/">MATLAB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Pandas/">Pandas</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/知识点总结/">知识点总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/练习题/">练习题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/运行问题汇总/">运行问题汇总</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文记录/">论文记录</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/写作技巧/">写作技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区分/">区分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字典学习/">字典学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装教程/">安装教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装问题及解决方法/">安装问题及解决方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/心得/">心得</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作过程/">操作过程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/易错点/">易错点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/特征选择/">特征选择</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/阅读/">阅读</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/写作技巧/" style="font-size: 10px;">写作技巧</a> <a href="/tags/区分/" style="font-size: 10px;">区分</a> <a href="/tags/字典学习/" style="font-size: 10px;">字典学习</a> <a href="/tags/安装教程/" style="font-size: 10px;">安装教程</a> <a href="/tags/安装问题及解决方法/" style="font-size: 10px;">安装问题及解决方法</a> <a href="/tags/心得/" style="font-size: 10px;">心得</a> <a href="/tags/操作过程/" style="font-size: 10px;">操作过程</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/易错点/" style="font-size: 10px;">易错点</a> <a href="/tags/特征选择/" style="font-size: 10px;">特征选择</a> <a href="/tags/阅读/" style="font-size: 10px;">阅读</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/15/我的书单/">我的书单</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/25/Supervised-Feature-Selection-With-a-Stratified-Feature-Weighting-Method/">Supervised Feature Selection With a Stratified Feature Weighting Method </a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/18/小论文写作/">小论文写作</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/12/机器学习/">机器学习的重要算法</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/09/Python库/">Python库</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 似水流年 &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">不蒜子告之   阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

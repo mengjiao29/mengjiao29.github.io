@@ -1,68 +1,315 @@
-extends base
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
 
-block title
-  title= page.title + ' | ' + config.title
+  
+  <title>小论文写作 | 博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="1、Abstract　　对自己工作及其贡献的总结：  阐述问题； 说明自己的解决方案和结果。">
+<meta name="keywords" content="写作技巧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小论文写作">
+<meta property="og:url" content="http://yoursite.com/2018/12/18/小论文写作/index.html">
+<meta property="og:site_name" content="博客">
+<meta property="og:description" content="1、Abstract　　对自己工作及其贡献的总结：  阐述问题； 说明自己的解决方案和结果。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-16T02:36:21.382Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小论文写作">
+<meta name="twitter:description" content="1、Abstract　　对自己工作及其贡献的总结：  阐述问题； 说明自己的解决方案和结果。">
+  
+  
+    <link rel="icon" href="/images/default-avatar.webp">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
 
-block content
-  .post
-    h1.post-title= page.title
-    .post-meta= page.date.format('ll')
-      if page.categories.length > 0
-        span= ' | '
-        span.category
-          for category in page.categories.toArray()
-            a(href=url_for(category.path))= category.name
-      if theme.busuanzi == true
-        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
-        span#busuanzi_container_page_pv= ' | '
-          span#busuanzi_value_page_pv
-          span= ' ' + __('Hits')
-      if theme.wordcount == true
-        include _partial/wordcount.pug
-    if theme.disqus
-      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
-    if theme.changyan
-      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
-        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
-        span= ' ' + __('Comment')
-      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
-    if theme.valine.enable
-      a.disqus-comment-count( href=url_for(page.path) + '#vcomment')
-        span.valine-comment-count(data-xid=url_for(page.path))
-        span= ' ' + __('Comment')
-    if page.toc
-      div(class='clear')
-        div(id='toc' class='toc-article')
-          div(class='toc-title')= __('contents')
-          != toc(page.content, {list_number: theme.toc_number})
-    .post-content
-      != page.content
-    if theme.donate.enable == true
-      iframe(src='/donate/?AliPayQR=' + theme.donate.alipay_qr + '&WeChatQR=' + theme.donate.wechat_qr + '&GitHub=' + theme.donate.github + '&BTCQR=' + theme.donate.btc_qr + '&BTCKEY='+ theme.donate.btc_key + '&PayPal=' + theme.donate.paypal_url, style='overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;', frameborder='0', scrolling='no')
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title
+        
+        >首页</a>
+      
+        <a class="nav-item" href="/archives" title
+        
+        >归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-小论文写作" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      小论文写作
+    </h1>
+  
 
-    if theme.post_copyright.enable == true && page.copyright != false
-      div
-        ul.post-copyright
-          li.post-copyright-author
-            strong= __('copyright_author_prefix')
-            = theme.post_copyright.author
-          li.post-copyright-link
-            strong= __('copyright_link_prefix')
-            a(href='/' + page.path)= page.permalink
-          li.post-copyright-license
-            strong= __('copyright_declare_prefix')
-            if theme.post_copyright.copyright_text
-              != theme.post_copyright.copyright_text
-            else
-              != __('copyright_default_text')
-      br
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2018/12/18/小论文写作/" class="article-date">
+  <time datetime="2018-12-18T05:10:05.000Z" itemprop="datePublished">2018-12-18</time>
+</a>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/写作技巧/">写作技巧</a></li></ul>
 
-    if theme.shareto == true
-      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
-      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
 
-    include _partial/tag.pug
-    include _partial/post_nav.pug
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h2 id="1、Abstract"><a href="#1、Abstract" class="headerlink" title="1、Abstract"></a>1、Abstract</h2><p>　　<strong>对自己工作及其贡献的总结：</strong></p>
+<ol>
+<li>阐述问题；</li>
+<li>说明自己的解决方案和结果。<a id="more"></a>
+<h2 id="2、Introduction"><a href="#2、Introduction" class="headerlink" title="2、Introduction"></a>2、Introduction</h2>　　<strong>背景，以及文章的大纲：</strong><!--more--></li>
+<li>题X是重要的；</li>
+<li>前人的工作A、B曾经研究过这个问题；</li>
+<li>A、B有一些缺陷；</li>
+<li>我们提出了方法D；</li>
+<li>D的基本特征，和A、B进行比较；</li>
+<li>实验证明D比A、B优越；</li>
+<li>文章的基本结构，大纲。</li>
+</ol>
+<h2 id="3、Previous-Work"><a href="#3、Previous-Work" class="headerlink" title="3、Previous Work"></a>3、Previous Work</h2><p>　　<strong>说明自己与前人的不同：</strong></p>
+<ol>
+<li>将历史上前人的工作分成类别；</li>
+<li>对每项重要的历史工作进行简短的回顾(一到几句)，注意要回顾正确，抓住要点，避免歧义；</li>
+<li>和自己提出的工作进行比较；</li>
+<li>不要忽略前人的重要工作，要公正评价前人的工作，不要过于苛刻；</li>
+<li>强调自己的工作和前人工作的不同，最好举出各自适用例子。</li>
+</ol>
+<h2 id="4、Our-Work"><a href="#4、Our-Work" class="headerlink" title="4、Our Work"></a>4、Our Work</h2><p>　　<strong>描述自己的工作，可分成多个部分：</strong></p>
+<ol>
+<li>从读者角度阐明定义和表示法；</li>
+<li>提供算法的伪码，图解和相应解释；</li>
+<li>用设问的方式回答读者可能提出的潜在问题；</li>
+<li>复杂的冗长的证明和细节可以放在附录中，这里关键是把问题阐述清楚；</li>
+<li>特例和例外应该在脚注中给予说明。</li>
+</ol>
+<h2 id="5、Experiments"><a href="#5、Experiments" class="headerlink" title="5、Experiments"></a>5、Experiments</h2><p>　　<strong>验证提出的方法和思路：</strong></p>
+<ol>
+<li>合理地设计实验（简洁的实验和详尽的实验步骤）；</li>
+<li>必要的比较，突出科学性；</li>
+<li>讨论，说明结果的意义；</li>
+<li>给出结论。</li>
+</ol>
+<h2 id="6、Conclusion"><a href="#6、Conclusion" class="headerlink" title="6、Conclusion"></a>6、Conclusion</h2><p>　　<strong>总结、前景及结文：</strong></p>
+<ol>
+<li>快速简短的总结；</li>
+<li>未来工作的展望；</li>
+<li>结束全文。</li>
+</ol>
+<h2 id="7、References"><a href="#7、References" class="headerlink" title="7、References"></a>7、References</h2><p>　　<strong>对相关重要背景文献的全面引用：</strong></p>
+<ol>
+<li>选择引文（众所周知的结论不必引用，其他人的工作要引用）；</li>
+<li>与前文保持一致。</li>
+</ol>
+<h3 id="8、Others"><a href="#8、Others" class="headerlink" title="8、Others"></a>8、Others</h3><p>　　<strong>致谢、附录、脚注。</strong></p>
 
-    if page.comments
-      include _partial/comments.pug
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2019/03/25/Supervised-Feature-Selection-With-a-Stratified-Feature-Weighting-Method/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            Supervised Feature Selection With a Stratified Feature Weighting Method 
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2018/10/12/机器学习/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">机器学习的重要算法</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fvgd8h1al0j30ql0ql3z0.jpg" title="图片来自网络"></img>
+    <h3 class="avatar-name">
+      
+        似水流年
+      
+    </h3>
+    <p class="avatar-slogan">
+      静坐常思己之过，闲谈莫论他人非。
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/">MATLAB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Pandas/">Pandas</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/知识点总结/">知识点总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/练习题/">练习题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/运行问题汇总/">运行问题汇总</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文记录/">论文记录</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/写作技巧/">写作技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区分/">区分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字典学习/">字典学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装教程/">安装教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装问题及解决方法/">安装问题及解决方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/心得/">心得</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作过程/">操作过程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/易错点/">易错点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/特征选择/">特征选择</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/阅读/">阅读</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/写作技巧/" style="font-size: 10px;">写作技巧</a> <a href="/tags/区分/" style="font-size: 10px;">区分</a> <a href="/tags/字典学习/" style="font-size: 10px;">字典学习</a> <a href="/tags/安装教程/" style="font-size: 10px;">安装教程</a> <a href="/tags/安装问题及解决方法/" style="font-size: 10px;">安装问题及解决方法</a> <a href="/tags/心得/" style="font-size: 10px;">心得</a> <a href="/tags/操作过程/" style="font-size: 10px;">操作过程</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/易错点/" style="font-size: 10px;">易错点</a> <a href="/tags/特征选择/" style="font-size: 10px;">特征选择</a> <a href="/tags/阅读/" style="font-size: 10px;">阅读</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/15/我的书单/">我的书单</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/25/Supervised-Feature-Selection-With-a-Stratified-Feature-Weighting-Method/">Supervised Feature Selection With a Stratified Feature Weighting Method </a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/18/小论文写作/">小论文写作</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/12/机器学习/">机器学习的重要算法</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/09/Python库/">Python库</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 似水流年 &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">不蒜子告之   阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>
