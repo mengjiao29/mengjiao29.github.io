@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Transfer Feature Learning with Joint Distribution Adaptation | 博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="JDA，联合 https://blog.csdn.net/weixin_37993251/article/details/89216128 Abstract　　迁移学习是一种有效的计算机视觉技术，它利用源域中丰富的标记数据为目标域构建精确的分类器。然而，以往的方法并没有同时减小域间的边界分布和条件分布的差异。在本文中，我们提出了一种新的迁移学习方法，称为Joint Distribution Ada">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Transfer Feature Learning with Joint Distribution Adaptation">
+<meta property="og:url" content="http://yoursite.com/2019/05/27/Transfer-Feature-Learning-with-Joint-Distribution-Adaptation/index.html">
+<meta property="og:site_name" content="博客">
+<meta property="og:description" content="JDA，联合 https://blog.csdn.net/weixin_37993251/article/details/89216128 Abstract　　迁移学习是一种有效的计算机视觉技术，它利用源域中丰富的标记数据为目标域构建精确的分类器。然而，以往的方法并没有同时减小域间的边界分布和条件分布的差异。在本文中，我们提出了一种新的迁移学习方法，称为Joint Distribution Ada">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-27T02:10:33.763Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Transfer Feature Learning with Joint Distribution Adaptation">
+<meta name="twitter:description" content="JDA，联合 https://blog.csdn.net/weixin_37993251/article/details/89216128 Abstract　　迁移学习是一种有效的计算机视觉技术，它利用源域中丰富的标记数据为目标域构建精确的分类器。然而，以往的方法并没有同时减小域间的边界分布和条件分布的差异。在本文中，我们提出了一种新的迁移学习方法，称为Joint Distribution Ada">
+  
+    <link rel="alternate" href="/atom.xml" title="博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fvgd8h1al0j30ql0ql3z0.jpg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title
+        
+        >首页</a>
+      
+        <a class="nav-item" href="/archives" title
+        
+        >归档</a>
+      
+        <a class="nav-item" href="/categories/阅读" title
+        
+        >随笔</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-Transfer-Feature-Learning-with-Joint-Distribution-Adaptation" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      Transfer Feature Learning with Joint Distribution Adaptation
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2019/05/27/Transfer-Feature-Learning-with-Joint-Distribution-Adaptation/" class="article-date">
+  <time datetime="2019-05-27T02:08:48.000Z" itemprop="datePublished">2019-05-27</time>
+</a>
+    
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <p>JDA，联合</p>
+<p><a href="https://blog.csdn.net/weixin_37993251/article/details/89216128" target="_blank" rel="noopener">https://blog.csdn.net/weixin_37993251/article/details/89216128</a></p>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>　　迁移学习是一种有效的计算机视觉技术，它利用源域中丰富的标记数据为目标域构建精确的分类器。然而，以往的方法并没有同时减小域间的边界分布和条件分布的差异。在本文中，我们提出了一种新的迁移学习方法，称为Joint Distribution Adaptation联合分布适配(JDA)。具体地说，JDA的目标是在一个有原则的降维过程中，联合适配jointly adapt边缘分布和条件分布，并构造新的特征表示，对于较大的分布差异，该特征表示是有效和鲁棒的。大量的实验证明，JDA在四种类型的跨域图像分类问题上可以显著优于几种最先进的方法。</p>
+<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h3><p>　　在计算机视觉中，标记信息对各种识别问题至关重要。对于标记数据非常稀疏的高度进化的可视化领域，可以期望利用一些相关源领域中随时可用的大量标记数据来训练精确的分类器，以便在目标领域中重用。近年来，针对跨领域知识适应问题，开发迁移学习[16]算法引起了越来越多的研究兴趣。迁移学习在图像分类[24,12]和标记[19,25]、目标识别[14,2,7,10]和特征学习[13,11,17]等方面都有很好的应用前景。</p>
+<p>　　在跨域问题中，通常从不同的概率分布中抽取源数据和目标数据。因此，迁移学习的一个主要计算问题是减少域之间的分布差异。最近的研究工作旨在发现一种共享的特征表示方法，该方法可以减少分布差异，同时保留输入数据的重要属性[21, 15, 18]，或重新加权源数据，以最小化分布差异，然后学习一个分类器对重新加权的源数据[3,4]。现有的方法大多是基于边际分布或条件分布来度量分布差异。然而，图1展示了匹配边缘分布和条件分布对于鲁棒迁移学习的重要性。最近的一些工作开始使用样本选择[26]、核密度估计[18]或两阶段重加权[23]来匹配边缘分布和条件分布，但是它们可能需要目标域中的一些标记数据，或者需要多个源域中的标记数据来进行一致学习。</p>
+<p>　　在本文中，我们处理了一个具有挑战性的场景，其中源域和目标域在边际分布和条件分布上都是不同的，并且目标域没有标记数据。我们提出了一种新的迁移学习解决方案，称为联合分布适配(JDA)，在一个有原则的降维过程中，联合适应边缘分布和条件分布。具体地说，我们扩展了非参数最大平均偏差(MMD)[8]来度量边际分布和条件分布的差异，并将其与主成分分析(PCA)相结合，构造了对实质分布差异有效且鲁棒的特征表示。给出了JDA优化问题的基本假设和学习算法。</p>
+<p>　　我们对四种类型的真实数据集进行了全面的实验：数字(USPS、MNIST)、人脸(PIE)和对象(COIL20、Office+Caltech[20])。从这些数据集中，我们构造了36个跨域的图像数据集，每个数据集位于一个知识适配难度不同。我们的实证结果表明，在几种最先进的迁移学习方法上，JDA方法的分类精度显著提高了7.57%。我们的结果揭示了跨域匹配边缘分布和条件分布的实质效果。</p>
+<h3 id="2-Related-Work"><a href="#2-Related-Work" class="headerlink" title="2. Related Work"></a>2. Related Work</h3><p>在本节中，我们将讨论与我们相关的先前关于迁移学习的工作，并强调它们之间的差异。</p>
+<p>根据文献调查[16]，现有的迁移学习方法大致可以分为两类：实例重加权[3,4]和特征提取。我们的工作属于特征提取类，它可以进一步重新组织成两个粗略的子类。</p>
+<p>属性保存，通过保存数据的重要属性，如统计属性[17,11]、几何结构[19,6]等，跨域共享潜在因素。<br>分布适配，明确最小化预定义的距离度量，以减小边缘分布[22,15]、条件分布[21]或两者的差异[26,23,18]。然而，为了匹配条件分布，这些方法要么需要一些标记的目标数据，要么需要多个源域来进行一致学习。<br>据我们所知，我们的工作是联合调整域之间的边际分布和条件分布的首批尝试之一，目标域中不需要标记数据。我们的工作是一个基于MMD的分布匹配降维过程，与特征重加权方法不同[1,5]。</p>
+<h3 id="3-Joint-Distribution-Adaptation"><a href="#3-Joint-Distribution-Adaptation" class="headerlink" title="3. Joint Distribution Adaptation"></a>3. Joint Distribution Adaptation</h3><p>在本节中，我们将详细介绍联合分布适配(JDA)方法的有效迁移学习。</p>
+<h4 id="3-1-Problem-Definition"><a href="#3-1-Problem-Definition" class="headerlink" title="3.1. Problem Definition"></a>3.1. Problem Definition</h4><p>我们从术语的定义开始。为了清晰起见，表1总结了常用的符号。</p>
+<p>Definition 1 (Domain) 域由一个多维特征空间和一个边缘概率分布组成，</p>
+<p>Definition 2 (Task) 给定域，任务由c -cardinality标签集和分类器组成，，可以解释为条件概率分布。</p>
+<p>Problem 1 (Joint Distribution Adaptation)·给定带标签的源域以及没有标签的目标域，假设，了解其中的特征表示形式哪个分布不同。</p>
+<p>和<br>和分别被减少</p>
+<h4 id="3-2-Proposed-Approach"><a href="#3-2-Proposed-Approach" class="headerlink" title="3.2. Proposed Approach"></a>3.2. Proposed Approach</h4><p>在本文中，我们提出通过特征变换T来调整联合分布，使特征x和标签y的联合期望在域之间匹配：式子1</p>
+<p>这个问题很重要，因为目标域中没有带标记的数据，并且无法准确估计。最好的近似是假设[1]。这可以通过将经过标记的源数据训练的分类器f应用于未标记的目标数据来执行。为了达到更精确的近似我们提出了一种迭代伪标签细化策略来迭代地细化转换T和分类器f。</p>
+<h5 id="3-2-1-Feature-Transformation"><a href="#3-2-1-Feature-Transformation" class="headerlink" title="3.2.1 Feature Transformation"></a>3.2.1 Feature Transformation</h5><p>降维方法可以通过最小化输入数据的重构误差来学习转换后的特征表示。为了简单和通用性，我们将选择主成分分析(PCA)进行数据重构。表示输入数据矩阵，表示centering matrix，其中 表示全为1的矩阵，那么协方差矩阵可以计算为。PCA的学习目标是找到一个正交变换矩阵使嵌入的数据方差最大化：式子2</p>
+<p>表示矩阵的迹。该优化问题可以通过特征分解得到有效的解，其中是k个最大的特征值。然后，我们通过计算得到了最优的k维表示。</p>
+<h5 id="3-2-2-Marginal-Distribution-Adaptation"><a href="#3-2-2-Marginal-Distribution-Adaptation" class="headerlink" title="3.2.2 Marginal Distribution Adaptation"></a>3.2.2 Marginal Distribution Adaptation</h5><p>然而，即使通过PCA诱导的k维表示，域之间的分布存在的差异也会很大。因此，一个主要的计算问题是通过显式地最小化适当的距离度量来减小分布差异。由于参数估计一个分布的概率密度通常是一个非平凡的问题，我们转而研究充分的统计量。为了减小边际分布Ps(xs)与Pt(xt)之间的差异，我们遵循[8,15,23]，采用经验最大均值差异(MMD)作为距离测度，比较不同的分布，计算出th的样本均值之间的距离：式子3</p>
+<p>其中是MMD矩阵，计算如下：式子4</p>
+<p>通过使式(3)最小化，使式(2)最大化，从而在新的表示下逼近域间的边缘分布。注意，我们刚刚将JDA开发为类似于TCA[15]。</p>
+<h5 id="3-2-3-Conditional-Distribution-Adaptation"><a href="#3-2-3-Conditional-Distribution-Adaptation" class="headerlink" title="3.2.3 Conditional Distribution Adaptation"></a>3.2.3 Conditional Distribution Adaptation</h5><p>然而，减小边界分布的差异并不能保证域之间的条件分布也可以画得很接近。确实，最小化条件分布之间的差对于鲁棒分布自适应[23]是至关重要的。不幸的是，匹配条件分布并不是一件简单的事情，甚至通过研究分布的足够统计信息也是如此，因为目标域中没有标记数据，例如不能直接建模。最近的一些工作开始通过在内核映射空间中选择样本来匹配条件分布<br>[26]，循环验证[3]，协同训练[4]，核密度估计[18]。但是它们都需要目标域中的一些标记数据，因此不能解决我们的问题。</p>
+<p>在本文中，我们提出探索目标数据的伪标签，通过将一些基于标记源数据训练的基分类器应用于未标记的目标数据，可以很容易地预测目标数据的伪标签。基分类器可以是标准学习者，如支持向量机(SVM)，也可以是迁移学习者，如迁移成分分析(TCA)[15]。因为后验概率和是相当复杂的，我们求助于探索充分的统计类条件分布和来代替。现在使用真正的源标签和伪目标标签，我们基本上可以匹配类条件分布。每个类在这里，我们修改MMD来测量类条件分布之间的距离。式子5</p>
+<p>是源数据中c类的一组例子，是的真实标签，。对应的，是目标数据中c类的一组例子，是的伪(预测)标签，。因此，涉及类标签的MMD矩阵计算如下：式子6</p>
+<p>通过最小化方程(5)使方程(2)最大化，在新的表示形式下，域之间的条件分布被画得很接近。有了这个重要的改进，JDA对于条件分布中发生变化的跨域问题具有很强的鲁棒性。</p>
+<p>重要的是要注意，虽然很多伪目标标签错误是由于在边缘分布和条件的不同，我们仍然可以利用它们来匹配中定义的条件分布与修改后的多党民主运动测量方程(5)。理由是我们探索充分匹配分布统计数据而不是密度估计。这样，我们就可以利用源分类器来改进目标分类器。我们将在实验中彻底验证这一论点。</p>
+<h5 id="3-2-4-Optimization-Problem"><a href="#3-2-4-Optimization-Problem" class="headerlink" title="3.2.4 Optimization Problem"></a>3.2.4 Optimization Problem</h5><p>在JDA中，为了实现有效和鲁棒的迁移学习，我们的目标是同时最小化跨域的边缘分布和条件分布的差异。因此，我们将方程(3)和(5)合并到式(2)，得到JDA优化问题：式子7</p>
+<p>其中λ是正则化参数优化问题是明确的保证。根据广义瑞利商，使(2)式最大化的最小化方程(3)和(5)等价于使(3)式最小化，使(2)式不变的最小化方程(5)。</p>
+<p>显然，TCA可以看作是JDA的一个特例，C = 0。使用JDA，我们可以同时调整域之间的边缘分布和条件分布，从而促进联合分布的适应。JDA的一个吸引人的特性是，它能够只使用有原则的无监督降维和基分类器有效地探索条件分布。因此，JDA可以很容易地实现和实际部署。</p>
+<p>Kernelization:对于非线性问题，考虑核映射：和核矩阵。我们利用表示中心定理来表示Kernel-JDA：式子8</p>
+<p>为Kernel-JDA的自适应矩阵。</p>
+<h5 id="3-2-5-Iterative-Refinement"><a href="#3-2-5-Iterative-Refinement" class="headerlink" title="3.2.5 Iterative Refinement"></a>3.2.5 Iterative Refinement</h5><p>值得注意的是，使用JDA，我们通常可以为目标数据获得更准确的标记。因此，如果我们使用这个标签作为伪目标标签，并迭代运行JDA，那么我们可以交替地提高标签质量，直到收敛。实验表明，这种类似em的伪标签细化方法在经验上是有效的。</p>
+<h4 id="3-3-Learning-Algorithm"><a href="#3-3-Learning-Algorithm" class="headerlink" title="3.3. Learning Algorithm"></a>3.3. Learning Algorithm</h4><p>根据约束优化理论，我们表示作为拉格朗日乘子，推导出问题(7)的拉格朗日函数为：式子9</p>
+<p>设置，得到了广义特征分解：式子10</p>
+<p>最后，将寻找最优自适应矩阵A简化为求解k个最小特征向量的方程(10)。算法1总结了JDA的完整过程。</p>
+<h4 id="3-4-Computational-Complexity"><a href="#3-4-Computational-Complexity" class="headerlink" title="3.4. Computational Complexity"></a>3.4. Computational Complexity</h4><p>我们使用大O符号分析算法1的计算复杂度。表示迭代次数T，则k的典型值不大于500,T不大于50，因此。计算成本具体如下： 用于求解稠密矩阵的广义特征分解问题，即第4行；为了构造MMD矩阵，第2-6行；对于所有其他步骤。综上所述，算法1的总体计算复杂度为。</p>
+<h3 id="4-Experiments"><a href="#4-Experiments" class="headerlink" title="4. Experiments"></a>4. Experiments</h3><p>在本节中，我们对图像分类问题进行了广泛的实验来评估JDA方法。数据集和代码将在网上发布。</p>
+<h4 id="4-1-Data-Preparation"><a href="#4-1-Data-Preparation" class="headerlink" title="4.1. Data Preparation"></a>4.1. Data Preparation</h4><p>USPS+MNIST、COIL20、PIE和Office+Caltech(参见图2和表2)是广泛用于评估视觉域适应算法的六个基准数据集。</p>
+<p>USPS 数据集由7291张训练图像和277张16×16尺寸的测试图像。</p>
+<p>MNIST dataset有一个包含60,000个示例的训练集和一个包含10,000个示例的测试集，示例大小为2828。从图2中，我们可以看到USPS和MNIST遵循非常不同的分布。它们共享10类数字。为了加快实验速度，我们构建了一个USPS vs MNIST的数据集，在USPS中随机抽取1800幅图像作为源数据，在MNIST中随机抽取2000幅图像作为目标数据。我们切换源/目标对以获得另一个数据集MNIST和USPS。我们一致地将所有图像缩放到16 x 16的大小，并通过编码灰度像素值的特征向量来表示每个图像。因此源数据和目标数据可以共享相同的特征空间。</p>
+<p>COIL20 包含20个对象和1440个图像。当物体在转盘上旋转时，每个物体的图像以5度的间隔拍摄，每个物体有72张图像。每幅图像为32 32像素，每像素有256个灰度级。</p>
+<p>在实验中，我们将数据集划分为两个子集COIL1和COIL2: COIL1包含在[0,85]<a href="象限1和3">180,265</a>方向上拍摄的所有图像;COIL2包含了在[90,175]<a href="象限2和象限4">270,355</a>方向上拍摄的所有图像，这样，COIL1和COIL2的子集将遵循相对不同的分布。我们通过选择COIL1中的所有720幅图像形成源数据，以及COIL2中的所有720幅图像形成目标数据，构建一个COIL1 vs COIL2数据集。我们切换源/目标以获得另一个数据集COIL2和COIL1。</p>
+<p>PIE Pose, Illumination, Expression</p>
+<p>是一个基准人脸数据库。该数据库有68个人，41368张32号脸的图片。13个同步相机(不同的姿势)和21个闪光灯(不同的光照和/或表情)捕捉面部图像。</p>
+<p>在这些实验中，为了全面评估我们的方法能够在不同的分布中鲁棒性，我们采用了五个PIE子集，每个子集对应于一个不同的姿态。具体来说，我们选择了PIE1 (C05，左位姿)、PIE2 (C07，上位姿)、PIE3 (C09，下位姿)、PIE4 (C27，前位姿)、pi5 (C29，右位姿)。在每个子集(pose)中，所有的面部图像都是在不同的光照、光照和表情条件下拍摄的。通过随机选择两个不同的子集(位姿)分别作为源域和目标域，我们可以构建5 4 = 20个跨域的人脸数据集，如PIE1 vs PIE2, PIE1 vs pi3, PIE1 vs pi4, PIE1 vs pi5，…， PIE5 vs . PIE4。通过这种方法，利用不同姿态的人脸图像构造源数据和目标数据，从而得到明显不同的分布。此外，这些数据集中的分布差异可能会有很大的差异，例如，左位姿和右位姿之间的差异要大于左位姿和前位姿之间的差异。</p>
+<p>Office [20,6]是一个越来越流行的视觉领域适应基准。该数据库包含三个真实世界对象域，Amazon(从在线商家下载的图像)、Webcam(通过web摄像机获得的低分辨率图像)和DSLR(通过数字单反相机获得的高分辨率图像)。它有4652幅图片和31个类别。</p>
+<p>Caltech-256 [9]是一个用于对象识别的标准数据库。该数据库有30,607幅图像和256个类别。在这些实验中，我们采用了Gong等人发布的public Office+Caltech数据集。SURF特征被提取并量化成800-bin直方图，其中的代码本是用Kmeans对来自Amazon的图像子集进行计算的。然后用z分数对直方图进行标准化。具体来说，我们有四个域，C (Caltech-256)， A (Amazon)， W (Webcam)和D (DSLR)。通过随机选择两个不同的域分别作为源域和目标域，构造了4 3 = 12个跨域对象数据集，</p>
+<h4 id="4-2-Baseline-Methods"><a href="#4-2-Baseline-Methods" class="headerlink" title="4.2. Baseline Methods"></a>4.2. Baseline Methods</h4><p>我们将JDA方法与五种最先进的(相关的)图像分类基线方法进行了比较。</p>
+<p>1-Nearest Neighbor Classifier (NN)<br>Principal Component Analysis (PCA) + NN<br>Geodesic Flow Kernel (GFK) [6] + NN<br>Transfer Component Analysis (TCA) [15] + NN<br>Transfer Subspace Learning (TSL) [22] + NN<br>具体来说，TCA和TSL都可以看作是JDA中C = 0的特殊情况。TSL采用Bregman散度代替MMD作为比较分布的距离。根据[6]的建议，由于不需要调优交叉验证参数，所以选择NN作为基分类器。</p>
+<h4 id="4-3-Implementation-Details"><a href="#4-3-Implementation-Details" class="headerlink" title="4.3. Implementation Details"></a>4.3. Implementation Details</h4><p>[6, 15]，神经网络对标记源数据进行训练，对未标记的目标数据进行测试;对所有数据进行PCA、TSL、TCA、JDA作为降维过程，然后对标记源数据训练神经网络分类器对未标记的目标数据进行分类。</p>
+<p>在我们的实验设置下，由于标记和未标记的数据是从不同的分布中采样的，因此不可能使用交叉验证来优化最优参数。因此，我们通过在参数空间中搜索最优的参数设置来评估所有方法，并报告每种方法的最佳结果。对于子空间学习方法，我们通过搜索。迁移学习方法,我们通过搜索设置适应正则化参数。</p>
+<p>JDA方法只涉及两个最早于模型参数:#子空间基地k和正则化参数λ。在接下来的章节中，我们对参数敏感性进行了实证分析，验证了JDA能够在大范围的参数值下获得稳定的性能。在比较研究中,我们设置k = 100和1)λ= 0.1位/数据集,2)λ= 1.0的对象数据集。JDA收敛的迭代次数为T = 10。我们不重复运行JDA，因为它没有随机初始化。我们使用测试数据的分类精度作为评价指标，这在文献[22,15,6]中得到了广泛的应用：式子11</p>
+<h4 id="4-4-Experimental-Results"><a href="#4-4-Experimental-Results" class="headerlink" title="4.4. Experimental Results"></a>4.4. Experimental Results</h4><p>JDA的分类精度和五种基线方法对36幅跨域图像(数字、人脸、图像)的分类精度数据集如表3所示。</p>
+<p>为了更好地解释，图3显示了结果。</p>
+<p>我们观察到，JDA比五种具有统计学意义的基线方法取得了更好的性能。JDA在36个数据集上的平均分类准确率为57.37%，与最佳基线方法TSL相比，性能提高了7.57%，即，显著降低误差15.07%。需要注意的是，这36个数据集的自适应难度相差很大，因为标准的NN分类器只能达到37.46%的平均分类精度，而且可能对很多数据集的性能都很差。验证了JDA能够为跨域图像分类任务构造更有效、鲁棒的表示。</p>
+<p>其次，GFK在Office+Caltech上的表现相当不错数据集，但在其他数据集上表现很差。在GFK中，子空间维数应足够小，以保证不同的子空间沿测地线流顺利传输，但这可能不能准确地表示输入数据。通过学习精确的共享子空间，JDA执行得更好。</p>
+<p>第三，JDA明显优于基于特征提取的最先进的迁移学习方法TCA。TCA的一个主要限制是没有显式地减少条件分布中的差异。JDA避免了这种限制，取得了更好的结果。</p>
+<p>最后，JDA比TSL具有更好的性能，而TSL依赖于核密度估计(KDE)来匹配边缘分布。从理论上讲，TSL比TCA更能适应边际分布，实证结果验证了这一点。然而，TSL也没有显式地减少条件分布中的差异。TSL适应条件分布的一个可能的困难是，TSL依赖于分布密度，使用部分不正确的伪标签很难对其进行操作。JDA仅通过研究足够的统计信息就成功地匹配了条件分布。</p>
+<h4 id="4-5-Effectiveness-Verification"><a href="#4-5-Effectiveness-Verification" class="headerlink" title="4.5. Effectiveness Verification"></a>4.5. Effectiveness Verification</h4><p>通过检测嵌入的分布距离和相似性，进一步验证了JDA的有效性。</p>
+<p>Distribution Distance: 我们在数据集PIE1和PIE2上运行NN、PCA、TCA和JDA，使用它们的最佳参数设置。然后通过式(7)计算每种方法在诱导嵌入上的MMD总距离。注意，为了计算域之间的边界分布和条件分布的真实距离，我们必须使用groundtruth标签而不是伪标签。然而，groundtruth目标标签仅用于验证，不用于学习过程。</p>
+<p>图4(a)为每种方法计算的分布距离，图4(b)为分类精度。我们可以观察到这些。</p>
+<p>1)在不学习特征表示的情况下，神经网络在原始特征空间中的分布距离最大。</p>
+<p>2) PCA可以学习到一种新的表示方法，这种方法可以稍微减小分布距离，但不会很大，因此对于跨域问题没有太大的帮助。</p>
+<p>3) TCA通过显式减小差-，可以大幅度减小分布距离在边缘分布上，这样可以达到更好的分类精度。</p>
+<p>4) JDA可以减少边界分布和条件分布的差异，从而提取出最有效、鲁棒的跨域问题表示。通过迭代细化伪标签，JDA可以减少每次迭代中条件分布的差异，提高分类性能。</p>
+<p>Similarity of Embeddings: 我们在数据集PIE1和PIE2上运行TCA和JDA，使用它们的最佳参数设置。然后分别计算TCA和JDA得到的嵌入上的20个最近邻相似矩阵。为了更好的说明，我们只使用前5类对应的365张人脸图像，其中前245张来自源数据，后120张来自目标数据。相应的，在相似矩阵中，左上角和右下角的子矩阵表示域内相似，右上角和左下角的子矩阵表示域间相似。相似矩阵的对角块表示同一域中的类内相似，右上、左下子矩阵的对角块表示跨域的类内相似，而相似矩阵的所有其他块表示类间相似。</p>
+<p>图4(c)和图4(d)分别给出了TCA嵌入和JDA嵌入的相似矩阵。为了有效、鲁棒地嵌入跨领域分类问题</p>
+<p>1)域间相似度要高到足以建立知识迁移</p>
+<p>2)类间相似度要低到便于分类识别。从这个意义上说，TCA不能很好地提取域间相似度高而类间相似度低的嵌入。这证明了仅适应边缘分布是不够的迁移学习。有趣的是，JDA确实可以学习理想的嵌入，这可以导致更好的跨不同领域的泛化能力。</p>
+<h4 id="4-6-Parameter-Sensitivity"><a href="#4-6-Parameter-Sensitivity" class="headerlink" title="4.6. Parameter Sensitivity"></a>4.6. Parameter Sensitivity</h4><p>通过敏感性分析，验证了JDA在大范围参数值下可以达到最优性能。我们只报告了USPS vs MNIST、PIE1 vs PIE2和A D数据集的结果，而由于空间限制，所有其他数据集上没有显示类似的趋势。</p>
+<p>我们运行JDA时，k值是变化的，我们可以选择它，这样低维表示对于数据重建是准确的。我们在图5(a)中绘制分类精度w.r.t.不同k值，并选择k[60,200]。</p>
+<p>我们运行JDA与最早于不同的λ值。从理论上讲,λ值的增大可以使收缩正规化更重要的JDA。最早于当λ0时,优化问题是不明确的。当λ,分布适应不执行，JDA不能构建健壮的表示最早于跨域分类。我们把分类精度w.r.t.不同的λ值在图5 (b),这表明λ[0.001,1.0]可以最佳参数值，JDA通常远胜于最早于基线的位置。</p>
+<p>####4.7. Convergence and Time Complexity<br>并对JDA的收敛性进行了实证检验。</p>
+<p>图5(c)和图5(d)表明，分类精度(分布距离)随着迭代次数的增加而稳步增加(下降)，在10次迭代内收敛。我们通过在具有1024个特征和4961张图像的PIE1和PIE2数据集中运行所有算法来检查时间复杂度，结果如表4所示。我们观察到JDA比TCA差T倍，但比TSL好得多。</p>
+<h3 id="5-Conclusion-and-Future-Work"><a href="#5-Conclusion-and-Future-Work" class="headerlink" title="5. Conclusion and Future Work"></a>5. Conclusion and Future Work</h3><p>本文提出了一种基于联合分布自适应(JDA)的鲁棒迁移学习方法。JDA的目标是在一个有原则的降维过程中同时适应边际分布和条件分布。大量的实验表明，JDA对各种跨域问题具有较强的鲁棒性和有效性，即使存在较大的分布差异，JDA也能显著优于几种最先进的自适应方法。</p>
+<p>在未来，我们计划将我们的距离度量扩展到其他表示学习方法，例如稀疏编码。</p>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2019/06/10/Python琐碎知识点/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            Python琐碎知识点
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2019/05/27/Domain-Adaptation-via-Transfer-Component-Analysis/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Domain Adaptaion via Transfer Component Analysis</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fvgd8h1al0j30ql0ql3z0.jpg" title="图片来自网络"></img>
+    <h3 class="avatar-name">
+      
+        似水流年
+      
+    </h3>
+    <p class="avatar-slogan">
+      静坐常思己之过，闲谈莫论他人非。
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/">MATLAB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Pandas/">Pandas</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/知识点总结/">知识点总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/练习题/">练习题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/运行问题汇总/">运行问题汇总</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文记录/">论文记录</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/迁移学习/">迁移学习</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/迁移学习/论文笔记/">论文笔记</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/阅读/">阅读</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/书单/">书单</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/会议安排/">会议安排</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/写作技巧/">写作技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区分/">区分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字典学习/">字典学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装教程/">安装教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装问题及解决方法/">安装问题及解决方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/心得/">心得</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作过程/">操作过程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/易错点/">易错点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/特征选择/">特征选择</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/背包问题/">背包问题</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/书单/" style="font-size: 10px;">书单</a> <a href="/tags/会议安排/" style="font-size: 10px;">会议安排</a> <a href="/tags/写作技巧/" style="font-size: 10px;">写作技巧</a> <a href="/tags/区分/" style="font-size: 10px;">区分</a> <a href="/tags/字典学习/" style="font-size: 10px;">字典学习</a> <a href="/tags/安装教程/" style="font-size: 10px;">安装教程</a> <a href="/tags/安装问题及解决方法/" style="font-size: 10px;">安装问题及解决方法</a> <a href="/tags/心得/" style="font-size: 10px;">心得</a> <a href="/tags/操作过程/" style="font-size: 10px;">操作过程</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/易错点/" style="font-size: 10px;">易错点</a> <a href="/tags/特征选择/" style="font-size: 10px;">特征选择</a> <a href="/tags/背包问题/" style="font-size: 10px;">背包问题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/06/10/Python琐碎知识点/">Python琐碎知识点</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/27/Transfer-Feature-Learning-with-Joint-Distribution-Adaptation/">Transfer Feature Learning with Joint Distribution Adaptation</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/27/Domain-Adaptation-via-Transfer-Component-Analysis/">Domain Adaptaion via Transfer Component Analysis</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/13/趣学算法/">趣学算法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/15/我的书单/">我的书单</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 似水流年 &nbsp;&nbsp;
+   
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">   欢迎第<span id="busuanzi_value_site_pv"></span>个访客来访</span>
+  </div>
+</footer>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/categories/阅读" class="mobile-nav-link">随笔</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

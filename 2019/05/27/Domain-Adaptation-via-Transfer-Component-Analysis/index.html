@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Domain Adaptaion via Transfer Component Analysis | 博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="Abstract：　　领域自适应允许来自源域的知识被转移到不同但相关的目标域。直观地说，跨域发现一个好的特征表示是至关重要的。在本文中，我们首先提出通过一种新的学习方法来寻找这种表示，用于领域自适应。即，迁移成分分析（TCA，transfer component analysis）。TCA尝试使用最大平均误差在再生内核Hilbert空间中跨域学习一些传递分量。在由这些传输成分跨越的子空间中，数据属">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Domain Adaptaion via Transfer Component Analysis">
+<meta property="og:url" content="http://yoursite.com/2019/05/27/Domain-Adaptation-via-Transfer-Component-Analysis/index.html">
+<meta property="og:site_name" content="博客">
+<meta property="og:description" content="Abstract：　　领域自适应允许来自源域的知识被转移到不同但相关的目标域。直观地说，跨域发现一个好的特征表示是至关重要的。在本文中，我们首先提出通过一种新的学习方法来寻找这种表示，用于领域自适应。即，迁移成分分析（TCA，transfer component analysis）。TCA尝试使用最大平均误差在再生内核Hilbert空间中跨域学习一些传递分量。在由这些传输成分跨越的子空间中，数据属">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-27T03:03:17.898Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Domain Adaptaion via Transfer Component Analysis">
+<meta name="twitter:description" content="Abstract：　　领域自适应允许来自源域的知识被转移到不同但相关的目标域。直观地说，跨域发现一个好的特征表示是至关重要的。在本文中，我们首先提出通过一种新的学习方法来寻找这种表示，用于领域自适应。即，迁移成分分析（TCA，transfer component analysis）。TCA尝试使用最大平均误差在再生内核Hilbert空间中跨域学习一些传递分量。在由这些传输成分跨越的子空间中，数据属">
+  
+    <link rel="alternate" href="/atom.xml" title="博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fvgd8h1al0j30ql0ql3z0.jpg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title
+        
+        >首页</a>
+      
+        <a class="nav-item" href="/archives" title
+        
+        >归档</a>
+      
+        <a class="nav-item" href="/categories/阅读" title
+        
+        >随笔</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-Domain-Adaptation-via-Transfer-Component-Analysis" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      Domain Adaptaion via Transfer Component Analysis
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2019/05/27/Domain-Adaptation-via-Transfer-Component-Analysis/" class="article-date">
+  <time datetime="2019-05-27T02:01:20.000Z" itemprop="datePublished">2019-05-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/迁移学习/">迁移学习</a>►<a class="article-category-link" href="/categories/迁移学习/论文笔记/">论文笔记</a>
+  </div>
+
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Abstract："><a href="#Abstract：" class="headerlink" title="Abstract："></a>Abstract：</h3><p>　　领域自适应允许来自源域的知识被转移到不同但相关的目标域。直观地说，跨域发现一个好的特征表示是至关重要的。在本文中，我们首先提出通过一种新的学习方法来寻找这种表示，用于领域自适应。即，<strong>迁移成分分析（TCA，transfer component analysis）</strong>。TCA尝试使用最大平均误差在再生内核Hilbert空间中跨域学习一些传递分量。在由这些传输成分跨越的子空间中，数据属性被保留，并且不同域中的数据分布彼此接近。因此，通过此子空间中的新表示，我们可以应用标准机器学习方法来训练源域中的分类器或回归模型，以便在目标域中使用。此外，为了揭示隐藏在来源和目标域的数据标签之间关系中的知识，我们将TCA扩展到半监督学习环境中，该环境将标签信息编码为迁移成分学习。我们将此扩展称为半监督TCA。我们工作的主要贡献在于我们提出了一种新颖的降维框架，用于减少潜在空间中域之间的距离以进行域适应。我们提出了无监督和半监督的特征提取方法，它们可以通过将数据投影到学习的传输成分上来显着减少域分布之间的距离。最后，我们的方法可以处理大型数据集，并自然导致样本外泛化。</p>
+<h3 id="1-introduction"><a href="#1-introduction" class="headerlink" title="1.introduction"></a>1.introduction</h3><p>域适应旨在通过利用源域中的训练数据来解决目标域中的学习问题，即使这些域可能具有不同的分布。这是一个重要的学习问题，因为标记数据通常很难获得，因此需要充分利用任何可用的相关数据。例如，在需要回归学习的室内WiFi定位中，标记的训练数据难以获得且昂贵[1]。此外，一旦校准，这些数据很容易过时，因为WiFi信号强度可能是许多动态因素的函数，包括时间，设备和空间[2]。为了减少重新校准工作量，我们可能希望调整在一个时间段（源域）中训练的本地化模型用于新的时间段（目标域），或者调整在一个移动设备（源域）上训练的本地化模型）用于新的移动设备（目标域）。</p>
+<p>域适应可以被认为是转移学习的一种特殊设置，旨在跨不同但相关的任务或领域传递共享知识[3] - [4] [5]。域自适应中的主要计算问题是如何减少源域数据和目标域数据的分布之间的差异。直觉上，发现跨域的良好特征表示是至关重要的[3]，[6]。一个好的特征表示应该能够尽可能地减少域之间的分布差异，同时保留重要的属性（例如几何属性，统计属性或辅助信息[7]）原始数据，尤其是目标域数据。最近，已经提出了几种方法来学习域适应的共同特征表示[8] - [9] [10]。DauméIII [8]设计了一个启发式内核来增强解决自然语言处理中某些特定领域适应问题的功能。Blitzer等人。[9]提出结构对应学习（SCL）算法，动机来自[11]，以诱导来自不同领域的特征之间的对应关系。此方法取决于两个域中频繁出现的枢轴特征的启发式选择。虽然通过实验证明SCL可以减少域之间的差异一个- 距离测量[6]，枢轴特征选择的启发式标准可能对不同的应用敏感。</p>
+<p>大多数先前基于特征的域自适应方法没有明确地最小化域之间的分布距离。最近，vonBünau等人。[12]提出了静态子空间分析（SSA）来匹配潜在空间中的分布。然而，SSA专注于识别静态子空间，而不考虑子空间中数据方差等属性的保留。潘等人。[10]提出了一种新的降维方法，称为最大均值差异嵌入（MMDE），用于域自适应。MMDE旨在学习一个共享的潜在空间，这些空间可以减少分布之间的距离，同时可以保留数据方差。然而，MMDE有两个主要的局限：1）MMDE是转换性的，并没有推广到样本外模式[13]，2）MMDE通过求解半定规划（SDP）来学习潜在空间，这是计算上的昂贵。</p>
+<p>本文中，我们提出了一种新的特征提取方法，称为传递分量分析（TCA），用于域适应。它试图学习两个域下面的一组公共传递成分，这样当投影到这个子空间时，不同域的数据分布差异可以大大减少，并且可以保留数据属性。然后可以在该子空间中使用标准机器学习方法来训练跨域的分类或回归模型。更具体地说，如果两个域彼此相关，则可能存在几个共同的成分（或潜在变量）。其中一些可能导致域之间的数据分布不同，而其他可能不同。与此同时，这些成分中的一些可以捕获原始数据的内在结构或判别信息，而其他成分可能不捕获。因此，我们的目标是发现那些不会在域中引起分布变化的成分，并且可以很好地保留原始数据的结构或任务相关信息。</p>
+<p>我们的主要贡献是提出一种新颖的降维方法，通过将数据投影到学习的转移子空间来减少域之间的距离。一旦找到子空间，就可以使用任何方法进行后续分类，回归和聚类。此外，TCA及其半监督扩展SSTCA比MMDE更有效，并且可以处理样本外扩展问题[13]。本文的其余部分安排如下。在第二节中，我们首先介绍了域适应问题和传统降维方法，并描述了Hilbert空间嵌入对于距离和分布之间的依赖度量。我们提出的用于域适应的特征提取方法在第III节中给出和IV。在第五节中，我们对一些玩具数据集和两个实际应用问题进行了一系列实验，以验证所提方法的有效性和效率。最后，我们在第六节结束我们的工作。</p>
+<h3 id="2-previous-works-and-preliminaries"><a href="#2-previous-works-and-preliminaries" class="headerlink" title="2.previous works and preliminaries"></a>2.previous works and preliminaries</h3><p>我们将域视为由两个主要成分组成：输入的特征空间 X 和投入的边际概率分布P(X)，哪里 X= { x1，… ，xñ} ∈ X是一组学习样本。例如，如果我们的学习任务是文档分类，并且每个术语都被视为二进制特征，那么X是所有文档向量的空间。通常，如果两个域不同，则它们可能具有不同的特征空间或不同的边际概率分布。在本文中，我们关注的是只有一个源和一个目标域共享相同的特征空间的设置。我们还假设一些标记数据d小号 在源域中可用，而只有未标记的数据 dŤ在目标域中可用。更具体地说，让源域数据为d小号= { （x小号1，y小号1），… ，（x小号ñ1，y小号ñ1）}，哪里 X小号一世∈ X 是输入和 ÿ小号一世∈ ÿ是相应的输出。同样，让目标域数据为dŤ= { xŤ1，… ，xŤñ2}，输入的地方 XŤ一世 也在 X。</p>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2019/05/27/Transfer-Feature-Learning-with-Joint-Distribution-Adaptation/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            Transfer Feature Learning with Joint Distribution Adaptation
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2019/05/13/趣学算法/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">趣学算法</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fvgd8h1al0j30ql0ql3z0.jpg" title="图片来自网络"></img>
+    <h3 class="avatar-name">
+      
+        似水流年
+      
+    </h3>
+    <p class="avatar-slogan">
+      静坐常思己之过，闲谈莫论他人非。
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/">MATLAB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Pandas/">Pandas</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/知识点总结/">知识点总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/练习题/">练习题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/运行问题汇总/">运行问题汇总</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文记录/">论文记录</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/迁移学习/">迁移学习</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/迁移学习/论文笔记/">论文笔记</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/阅读/">阅读</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/书单/">书单</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/会议安排/">会议安排</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/写作技巧/">写作技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区分/">区分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字典学习/">字典学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装教程/">安装教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装问题及解决方法/">安装问题及解决方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/心得/">心得</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作过程/">操作过程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/易错点/">易错点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/特征选择/">特征选择</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/背包问题/">背包问题</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/书单/" style="font-size: 10px;">书单</a> <a href="/tags/会议安排/" style="font-size: 10px;">会议安排</a> <a href="/tags/写作技巧/" style="font-size: 10px;">写作技巧</a> <a href="/tags/区分/" style="font-size: 10px;">区分</a> <a href="/tags/字典学习/" style="font-size: 10px;">字典学习</a> <a href="/tags/安装教程/" style="font-size: 10px;">安装教程</a> <a href="/tags/安装问题及解决方法/" style="font-size: 10px;">安装问题及解决方法</a> <a href="/tags/心得/" style="font-size: 10px;">心得</a> <a href="/tags/操作过程/" style="font-size: 10px;">操作过程</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/易错点/" style="font-size: 10px;">易错点</a> <a href="/tags/特征选择/" style="font-size: 10px;">特征选择</a> <a href="/tags/背包问题/" style="font-size: 10px;">背包问题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/06/10/Python琐碎知识点/">Python琐碎知识点</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/27/Transfer-Feature-Learning-with-Joint-Distribution-Adaptation/">Transfer Feature Learning with Joint Distribution Adaptation</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/27/Domain-Adaptation-via-Transfer-Component-Analysis/">Domain Adaptaion via Transfer Component Analysis</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/13/趣学算法/">趣学算法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/15/我的书单/">我的书单</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 似水流年 &nbsp;&nbsp;
+   
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">   欢迎第<span id="busuanzi_value_site_pv"></span>个访客来访</span>
+  </div>
+</footer>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/categories/阅读" class="mobile-nav-link">随笔</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>
