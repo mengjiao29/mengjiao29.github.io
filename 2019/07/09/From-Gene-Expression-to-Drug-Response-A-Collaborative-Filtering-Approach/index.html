@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>From Gene Expression to Drug Response: A Collaborative Filtering Approach | 博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="[toc]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="From Gene Expression to Drug Response: A Collaborative Filtering Approach">
+<meta property="og:url" content="http://yoursite.com/2019/07/09/From-Gene-Expression-to-Drug-Response-A-Collaborative-Filtering-Approach/index.html">
+<meta property="og:site_name" content="博客">
+<meta property="og:description" content="[toc]">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://chuantu.xyz/t6/702/1562674870x3030586988.png">
+<meta property="og:image" content="http://chuantu.xyz/t6/702/1562674952x2073513213.png">
+<meta property="og:image" content="https://cdn.sinaimg.cn.52ecy.cn/large/005BYqpgly1g4tvd41zyij30k6061mxm.jpg">
+<meta property="og:image" content="https://cdn.sinaimg.cn.52ecy.cn/large/005BYqpgly1g4tvdxkbw1j30dd01pglj.jpg">
+<meta property="og:image" content="https://cdn.sinaimg.cn.52ecy.cn/large/005BYqpgly1g4tvg4oas3j30gv0bzdgs.jpg">
+<meta property="og:image" content="https://cdn.sinaimg.cn.52ecy.cn/large/005BYqpgly1g4tvcjf7zbj30in025aa1.jpg">
+<meta property="og:updated_time" content="2019-07-09T12:45:07.650Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="From Gene Expression to Drug Response: A Collaborative Filtering Approach">
+<meta name="twitter:description" content="[toc]">
+<meta name="twitter:image" content="http://chuantu.xyz/t6/702/1562674870x3030586988.png">
+  
+    <link rel="alternate" href="/atom.xml" title="博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fvgd8h1al0j30ql0ql3z0.jpg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title
+        
+        >首页</a>
+      
+        <a class="nav-item" href="/archives" title
+        
+        >归档</a>
+      
+        <a class="nav-item" href="/categories/阅读" title
+        
+        >随笔</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-From-Gene-Expression-to-Drug-Response-A-Collaborative-Filtering-Approach" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      From Gene Expression to Drug Response: A Collaborative Filtering Approach
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2019/07/09/From-Gene-Expression-to-Drug-Response-A-Collaborative-Filtering-Approach/" class="article-date">
+  <time datetime="2019-07-09T12:26:51.000Z" itemprop="datePublished">2019-07-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/论文笔记/">论文笔记</a>►<a class="article-category-link" href="/categories/论文笔记/对抗神经网络/">对抗神经网络</a>►<a class="article-category-link" href="/categories/论文笔记/对抗神经网络/协同过滤/">协同过滤</a>
+  </div>
+
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <p>[toc]<br><a id="more"></a></p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract:"></a>Abstract:</h2><p>　　预测癌细胞对药物的反应是药物基因组学中的一个重要问题。最近在细胞系中生成分析基因表达和药物敏感性的大规模数据集的努力为研究该问题提供了独特的机会。然而，即使在这些大型数据集中，与特征（基因）的数量相比，一个主要挑战是少量样本（细胞系）。我们提出了一种协同过滤算法，用于建立基因 - 药物关系模型，以识别最有可能从治疗中获益的患者。由于基因表达在不同细胞系中的相关性，基因表达矩阵大致是低等级的，这表明药物反应可以从基因表达的减小维度潜在空间估计。为此，我们提出了联合低秩矩阵分解和潜线性回归方法。对来自癌症药物敏感性基因组数据的数据进行了实验，以表明所提出的方法可以比最先进的方法更好地预测药物 - 基因关联。</p>
+<h2 id="第1节介绍"><a href="#第1节介绍" class="headerlink" title="第1节介绍"></a>第1节介绍</h2><p>　　选择合适的药物对癌症的存活至关重要[1]，但预测患者对特定药物反应的现有方法不够可靠。对化疗的抵抗是一个主要问题，因为在许多情况下，时间是至关重要的。因此，构建化学反应的预测模型是非常有意义的，医生可以使用它来预筛选最有希望的治疗方案。近年来，药物基因组学领域已经成为一个非常有前途的领域，具有挑战性的问题，可以从信号处理界的更多关注中受益。</p>
+<p>　　最近进行了几项大规模研究，以测量数百种细胞系的基因表达（即转录组学）谱及其对数十种不同药物的敏感性[2] [3] - [4]。这些研究的结果可用于数据库，如癌症细胞系百科全书（CCLE）[2]，癌症药物敏感性基因组学（GDSC）[3]和癌症治疗反应门户网站（CTRP）[4] ]，将基因表达与药物反应联系起来的预测模型更接近可及范围。</p>
+<p>　　已经提出了许多药物敏感性预测算法来表征转录组学信息和药物反应之间的关系[5] [6] [7] [8] [9] - [10]。Emad 等人。最近提出了一种基因优先化方法，称为网络信息增强基因优先化（ProGENI），用于对与表型密切相关的基因进行排序[9]。通过排序基因，作者使用核心支持向量机（SVM）进行药物敏感性预测，并显示与其他广泛使用的优先化方法（如Pearson相关性和弹性网）确定的基因相比，ProGENI鉴定的基因可以更好地预测药物反应。 （EN）。在[10]，通过国家癌症研究所（NCI）与逆向工程评估与方法对话（DREAM）项目的合作，对44种不同的药物反应预测方法进行了比较，其中包括贝叶斯多任务多核学习表现出最佳的预测性能。然而，培训仅基于35个样本，似乎非常有限。为了处理基因数量大于细胞系数量的情况，流行的方法依赖于基因选择的某种稀疏回归，以帮助解决即使是最简单的线性预测模型中出现的不确定性[11]，[ 12]。</p>
+<p>　　在本文中，我们采取了不同的方法。由于观察到基因表达矩阵近似（非常）低等级，而不是依靠基因选择来获得良好的问题，我们提出了一种基于联合低秩偏置矩阵分解的协同过滤（CF）方法。来自潜在空间的线性预测。值得强调的是，与忽略不同基因表达偏差的现有方法不同，CF考虑了这种偏差，从而产生更准确的模型。我们提供了初步结果，使用GDSC的实际数据证实了所提方法的有效性。</p>
+<h2 id="第2节提出的方法"><a href="#第2节提出的方法" class="headerlink" title="第2节提出的方法"></a>第2节提出的方法</h2><p>　　即使在大型数据库如GDSC [3]中，一个主要挑战是与样本数量（数百个细胞系）相比的大量特征（数万个基因）。因此，从基因表达预测药物反应本质上是不确定的。在文献中，解决这个问题的常用方法是通过复杂的特征选择方法明智地选择少量的转录组特征，例如稀疏回归或利用蛋白质 - 蛋白质相互作用形式的先验知识的其他基因排序策略（PPI的）和遗传相互作用[9]。现有数据集包含不同细胞系的基因表达数据及其对不同药物的反应，其中每种药物的反应仅针对细胞系的子集进行测量。实验测量的基因表达数据自然是有噪声的并且不一定是“居中的”。我们建议使用基于协同过滤的新方法，在考虑噪声和偏差的同时对基因表达数据的固有低维度进行建模。</p>
+<p>　　解决基因表达测量中的偏差的一种方法是将基因表达水平g ij模拟为：<br><img src="http://chuantu.xyz/t6/702/1562674870x3030586988.png" alt=""></p>
+<p>　　表示对应于实际的基因表达Ĵ个所述的基因我个样品（细胞系），<br>Ñ IJ是其在这里被假定为高斯具有零均值分布的附加噪声，和β Ĵ是的偏置Ĵ个基因。（1）的矩阵形式由下式给出<br><img src="http://chuantu.xyz/t6/702/1562674952x2073513213.png" alt=""></p>
+<p>　　其中（•）T是转置，1是长度为M的向量，所有元素都等于1，M是训练样本的数量，L是细胞系中转录组特征的数量!<img src="https://cdn.sinaimg.cn.52ecy.cn/large/005BYqpgly1g4tvd41zyij30k6061mxm.jpg" alt=""></p>
+<p>　　为了继续，我们通过图1中所示的实例提出我们的动机，其中绘制了来自GDSC数据集的基因表达矩阵的奇异值。该基质含有1018个细胞系中17,737个基因的表达。图1显示基因表达矩阵由少数主要成分支配，表明不同细胞系的基因表达强相关，基因表达矩阵近似低等级。因此，我们有<br><img src="https://cdn.sinaimg.cn.52ecy.cn/large/005BYqpgly1g4tvdxkbw1j30dd01pglj.jpg" alt=""><br><img src="https://cdn.sinaimg.cn.52ecy.cn/large/005BYqpgly1g4tvg4oas3j30gv0bzdgs.jpg" alt=""><br>　　上述观察意味着没有必要利用所有转录组学特征进行药物反应预测。相反，通过维数减少矩阵B可以显着减小dimension的维数。作为后续，我们提出了一种新的联合维数减少和药物反应预测策略，其中药物反应是从潜在的空间估计的。基因表达矩阵-A。在数学上，我们试图解决<br><img src="https://cdn.sinaimg.cn.52ecy.cn/large/005BYqpgly1g4tvcjf7zbj30in025aa1.jpg" alt=""></p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>　　我们使用来自GDSC的实际数据，将我们的CF启发方法的性能与最先进的算法进行比较，该数据可通过<a href="https://www.cancerrxgene.org/downloads完全访问。我们使用2017年3月2日发布的细胞系的RMA标准化基础基因表达谱。我们使用的药物反应数据于2017年3月27日发布，包含不同的生化半数抑制浓度（IC" target="_blank" rel="noopener">https://www.cancerrxgene.org/downloads完全访问。我们使用2017年3月2日发布的细胞系的RMA标准化基础基因表达谱。我们使用的药物反应数据于2017年3月27日发布，包含不同的生化半数抑制浓度（IC</a> 50）值每种细胞系的药物。</p>
+<p>　　对于GDSC中的大多数细胞系，可获得大约18,000个基因的表达值，但使用最大样本数量测量的药物包括大约1,000个样本 - 这对训练准确预测提出了挑战模型。因此，有必要谨慎地选择较小的信息特征子集用于训练，同时排除不相关的特征。为此，我们首先使用ProGENI算法[9]对每种药物的基因进行排序，并选择前500个基因来构建较小尺寸的基因表达矩阵。然后我们选择70％的受试药物数据样本进行培训，10％进行验证，20％进行测试。</p>
+<p>　　在第一个例子中，我们用相对均方根误差（RMSE）比较CF与正交匹配追踪（OMP），迭代硬阈值（IHT）和弹性网（EN）。我们选择10种药物（即SN-38，TAK-715，Ruxolitinib，Ispinesib Mesylate，BX-912，Avagacestat，XMD14-99，PHA-793887，XMD15-27，Quizartinib）来检验不同竞争者的表现并报告他们的RMSEs。这里，RMSE通过10个随机排列求平均值，并计算为</p>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2019/07/09/解决Navicat-for-MySQL-连接-Mysql-8-0-11-出现1251-Client-does-not-support-authenticati/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            解决Navicat for MySQL 连接 Mysql 8.0.11 出现1251- Client does not support authenticati
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2019/06/10/Python琐碎知识点/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Python琐碎知识点</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fvgd8h1al0j30ql0ql3z0.jpg" title="图片来自网络"></img>
+    <h3 class="avatar-name">
+      
+        似水流年
+      
+    </h3>
+    <p class="avatar-slogan">
+      静坐常思己之过，闲谈莫论他人非。
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/">MATLAB</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/安装问题及解决方法/">安装问题及解决方法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Pandas/">Pandas</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/知识点总结/">知识点总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/练习题/">练习题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/运行问题汇总/">运行问题汇总</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/安装问题及解决方法/">安装问题及解决方法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文笔记/">论文笔记</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/论文笔记/对抗神经网络/">对抗神经网络</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/论文笔记/对抗神经网络/协同过滤/">协同过滤</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文记录/">论文记录</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/迁移学习/">迁移学习</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/迁移学习/论文笔记/">论文笔记</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/阅读/">阅读</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/书单/">书单</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/会议安排/">会议安排</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/写作技巧/">写作技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区分/">区分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字典学习/">字典学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装教程/">安装教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装问题及解决方法/">安装问题及解决方法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/心得/">心得</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作过程/">操作过程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/易错点/">易错点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/特征选择/">特征选择</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/背包问题/">背包问题</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/书单/" style="font-size: 10px;">书单</a> <a href="/tags/会议安排/" style="font-size: 10px;">会议安排</a> <a href="/tags/写作技巧/" style="font-size: 10px;">写作技巧</a> <a href="/tags/区分/" style="font-size: 10px;">区分</a> <a href="/tags/字典学习/" style="font-size: 10px;">字典学习</a> <a href="/tags/安装教程/" style="font-size: 10px;">安装教程</a> <a href="/tags/安装问题及解决方法/" style="font-size: 10px;">安装问题及解决方法</a> <a href="/tags/心得/" style="font-size: 10px;">心得</a> <a href="/tags/操作过程/" style="font-size: 10px;">操作过程</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/易错点/" style="font-size: 10px;">易错点</a> <a href="/tags/特征选择/" style="font-size: 10px;">特征选择</a> <a href="/tags/背包问题/" style="font-size: 10px;">背包问题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/09/JDK-Tomcat-Mysql-Maven的配置/">JDK + Tomcat + Mysql + Maven的配置b</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/解决Navicat-for-MySQL-连接-Mysql-8-0-11-出现1251-Client-does-not-support-authenticati/">解决Navicat for MySQL 连接 Mysql 8.0.11 出现1251- Client does not support authenticati</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/From-Gene-Expression-to-Drug-Response-A-Collaborative-Filtering-Approach/">From Gene Expression to Drug Response: A Collaborative Filtering Approach</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/10/Python琐碎知识点/">Python琐碎知识点</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/27/Transfer-Feature-Learning-with-Joint-Distribution-Adaptation/">Transfer Feature Learning with Joint Distribution Adaptation</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 似水流年 &nbsp;&nbsp;
+   
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">   欢迎第<span id="busuanzi_value_site_pv"></span>个访客来访</span>
+  </div>
+</footer>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/categories/阅读" class="mobile-nav-link">随笔</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>
