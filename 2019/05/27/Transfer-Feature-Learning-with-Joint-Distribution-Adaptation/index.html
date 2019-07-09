@@ -10,17 +10,17 @@
   
   
   
-  <meta name="description" content="JDA，联合 https://blog.csdn.net/weixin_37993251/article/details/89216128 Abstract　　迁移学习是一种有效的计算机视觉技术，它利用源域中丰富的标记数据为目标域构建精确的分类器。然而，以往的方法并没有同时减小域间的边界分布和条件分布的差异。在本文中，我们提出了一种新的迁移学习方法，称为Joint Distribution Ada">
+  <meta name="description" content="JDA，联合 https://blog.csdn.net/weixin_37993251/article/details/89216128">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Transfer Feature Learning with Joint Distribution Adaptation">
 <meta property="og:url" content="http://yoursite.com/2019/05/27/Transfer-Feature-Learning-with-Joint-Distribution-Adaptation/index.html">
 <meta property="og:site_name" content="博客">
-<meta property="og:description" content="JDA，联合 https://blog.csdn.net/weixin_37993251/article/details/89216128 Abstract　　迁移学习是一种有效的计算机视觉技术，它利用源域中丰富的标记数据为目标域构建精确的分类器。然而，以往的方法并没有同时减小域间的边界分布和条件分布的差异。在本文中，我们提出了一种新的迁移学习方法，称为Joint Distribution Ada">
+<meta property="og:description" content="JDA，联合 https://blog.csdn.net/weixin_37993251/article/details/89216128">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-27T02:10:33.763Z">
+<meta property="og:updated_time" content="2019-07-09T12:59:15.494Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Transfer Feature Learning with Joint Distribution Adaptation">
-<meta name="twitter:description" content="JDA，联合 https://blog.csdn.net/weixin_37993251/article/details/89216128 Abstract　　迁移学习是一种有效的计算机视觉技术，它利用源域中丰富的标记数据为目标域构建精确的分类器。然而，以往的方法并没有同时减小域间的边界分布和条件分布的差异。在本文中，我们提出了一种新的迁移学习方法，称为Joint Distribution Ada">
+<meta name="twitter:description" content="JDA，联合 https://blog.csdn.net/weixin_37993251/article/details/89216128">
   
     <link rel="alternate" href="/atom.xml" title="博客" type="application/atom+xml">
   
@@ -91,7 +91,7 @@
     <div class="article-content article-content-cloud" itemprop="articleBody">
       
         <p>JDA，联合</p>
-<p><a href="https://blog.csdn.net/weixin_37993251/article/details/89216128" target="_blank" rel="noopener">https://blog.csdn.net/weixin_37993251/article/details/89216128</a></p>
+<p><a href="https://blog.csdn.net/weixin_37993251/article/details/89216128" target="_blank" rel="noopener">https://blog.csdn.net/weixin_37993251/article/details/89216128</a><br><a id="more"></a></p>
 <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>　　迁移学习是一种有效的计算机视觉技术，它利用源域中丰富的标记数据为目标域构建精确的分类器。然而，以往的方法并没有同时减小域间的边界分布和条件分布的差异。在本文中，我们提出了一种新的迁移学习方法，称为Joint Distribution Adaptation联合分布适配(JDA)。具体地说，JDA的目标是在一个有原则的降维过程中，联合适配jointly adapt边缘分布和条件分布，并构造新的特征表示，对于较大的分布差异，该特征表示是有效和鲁棒的。大量的实验证明，JDA在四种类型的跨域图像分类问题上可以显著优于几种最先进的方法。</p>
 <h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h3><p>　　在计算机视觉中，标记信息对各种识别问题至关重要。对于标记数据非常稀疏的高度进化的可视化领域，可以期望利用一些相关源领域中随时可用的大量标记数据来训练精确的分类器，以便在目标领域中重用。近年来，针对跨领域知识适应问题，开发迁移学习[16]算法引起了越来越多的研究兴趣。迁移学习在图像分类[24,12]和标记[19,25]、目标识别[14,2,7,10]和特征学习[13,11,17]等方面都有很好的应用前景。</p>
 <p>　　在跨域问题中，通常从不同的概率分布中抽取源数据和目标数据。因此，迁移学习的一个主要计算问题是减少域之间的分布差异。最近的研究工作旨在发现一种共享的特征表示方法，该方法可以减少分布差异，同时保留输入数据的重要属性[21, 15, 18]，或重新加权源数据，以最小化分布差异，然后学习一个分类器对重新加权的源数据[3,4]。现有的方法大多是基于边际分布或条件分布来度量分布差异。然而，图1展示了匹配边缘分布和条件分布对于鲁棒迁移学习的重要性。最近的一些工作开始使用样本选择[26]、核密度估计[18]或两阶段重加权[23]来匹配边缘分布和条件分布，但是它们可能需要目标域中的一些标记数据，或者需要多个源域中的标记数据来进行一致学习。</p>
